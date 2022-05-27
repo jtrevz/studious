@@ -1,11 +1,10 @@
-import Card from "../Card";
+import Flashcard from "../Flashcard";
 
 export default function Set({ cards }) {
   return (
     <div className="card-grid">
       {cards.map((card) => {
-        return <Card card={card} key={card.id}></Card>;
-        
+        return <Flashcard card={card} key={card.id}></Flashcard>;
       })}
     </div>
   );
