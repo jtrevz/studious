@@ -5,3 +5,11 @@
   padding: 12px;
   height: 3000px;
 }
+
+.userNav {
+  margin-right: auto;
+}
+
+.user {
+  margin-right: none;
+}
