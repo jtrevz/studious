@@ -16,11 +16,11 @@ function App() {
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav>
-            <Nav.Link className="link">Collections</Nav.Link>
-            <Nav.Link className="link">Sets</Nav.Link>
+            <Nav.Link>Collections</Nav.Link>
+            <Nav.Link>Sets</Nav.Link>
           </Nav>
-          <Nav className="link userNav">
-            <NavDropdown title="jtrevz" className="user">
+          <Nav>
+            <NavDropdown title="jtrevz">
               <NavDropdown.Item>Account</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>Sign out</NavDropdown.Item>
