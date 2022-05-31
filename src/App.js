@@ -7,6 +7,7 @@ import { NavDropdown } from "react-bootstrap";
 import { BsHourglassSplit } from "react-icons/bs";
 import { BsLightbulbFill } from "react-icons/bs";
 import { BsLightbulb } from "react-icons/bs";
+import { BsPerson } from "react-icons/bs";
 
 function App() {
   return (
@@ -18,14 +19,17 @@ function App() {
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav>
-            <Nav.Link>collections</Nav.Link>
-            <Nav.Link>sets</Nav.Link>
+            <Nav.Link>Collections</Nav.Link>
+            <Nav.Link>Sets</Nav.Link>
           </Nav>
-          <Nav>
-            <NavDropdown title="jtrevz">
-              <NavDropdown.Item>account</NavDropdown.Item>
+          <Nav className="user">
+            {/* <div className="pic">
+              <BsPerson classname="userPFP" />
+            </div> */}
+            <NavDropdown title="jtrevz" align="end">
+              <NavDropdown.Item>Account</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item>sign out</NavDropdown.Item>
+              <NavDropdown.Item>Sign out</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
