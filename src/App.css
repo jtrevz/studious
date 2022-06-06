@@ -1,3 +1,6 @@
+.App {
+  background-color: #e3e2df;
+}
 .bg-myCustom {
   background-color: #376e6f;
 }
@@ -5,4 +8,3 @@
   padding: 12px;
   height: 3000px;
 }
-
