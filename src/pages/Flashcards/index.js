@@ -30,10 +30,12 @@ export default function Flashcards() {
   return (
     <div>
       <Flashcard card={cards[currentCard]} key={currentCard} />
-      <div>
-        <BsFillArrowLeftCircleFill className="arrows" onClick={last} />
-        <BsFillArrowRightCircleFill className="arrows" onClick={next} />
-        <p>{`${currentCard + 1}/${cards.length}`}</p>
+      <div className="counter">
+        <div className="arrows">
+          <BsFillArrowLeftCircleFill className="arrow" onClick={last} />
+          <BsFillArrowRightCircleFill className="arrow" onClick={next} />
+        </div>
+        <div>{`${currentCard + 1}/${cards.length}`}</div>
       </div>
     </div>
   );

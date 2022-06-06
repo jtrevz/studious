@@ -1,0 +1,16 @@
+.counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrows {
+  padding: 1%;
+}
+.arrow {
+  color: #e85a4f;
+  height: 4em;
+  width: 4em;
+  padding: 6%;
+}
