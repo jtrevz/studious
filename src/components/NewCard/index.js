@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
+import NewCardContext  from '../../contexts/NewCardContext';
 
 export default function NewCard(props) {
+  const { NewCardInfo } = useContext(NewCardContext);
+
   const [newFront, setNewFront] = useState("");
   const [newBack, setNewBack] = useState("");
-
-  useEffect(() => {
-    if (props.onChange) {
-      props.onChange();
-    }
-  });
 
   return (
     <div>
