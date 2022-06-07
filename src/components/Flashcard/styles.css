@@ -12,6 +12,11 @@
   width: 100%;
   transition: 150ms;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0));
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.6);
 }
 
 .card.flip {
@@ -33,6 +38,7 @@
 .back {
   font-family: "Nunito", sans-serif;
   font-size: 2rem;
+  color: #555;
 }
 
 .card .back {

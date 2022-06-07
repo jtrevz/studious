@@ -6,10 +6,13 @@ import {
   BsFillArrowRightCircleFill,
 } from "react-icons/bs";
 import "./styles.css";
+import { db } from "../../firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 export default function Flashcards() {
   const [cards, setCards] = useState(sampleInfo);
   const [currentCard, setCurrentCard] = useState(0);
+  const cardCollectionRef = collection(db, "card");
 
   const next = () => {
     if (currentCard === cards.length - 1) {
@@ -25,7 +28,13 @@ export default function Flashcards() {
     return setCurrentCard(currentCard - 1);
   };
 
-  // useEffect(() => {});
+  useEffect(() => {
+    const getCards = async () => {
+      const data = await getDocs(cardCollectionRef);
+      setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getCards();
+  }, []);
 
   return (
     <div>
