@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Set from "../../components/Set";
 import Flashcard from "../../components/Flashcard";
+import NewCard from "../../components/NewCard";
+import { Modal, Button } from "react-bootstrap";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
+  BsPlusCircleFill,
+  BsPencil,
 } from "react-icons/bs";
 import "./styles.css";
 import { db } from "../../firebase";
@@ -13,6 +17,10 @@ export default function Flashcards() {
   const [cards, setCards] = useState(sampleInfo);
   const [currentCard, setCurrentCard] = useState(0);
   const cardCollectionRef = collection(db, "card");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const next = () => {
     if (currentCard === cards.length - 1) {
@@ -38,14 +46,35 @@ export default function Flashcards() {
 
   return (
     <div>
-      <Flashcard card={cards[currentCard]} key={currentCard} />
-      <div className="counter">
-        <div className="arrows">
-          <BsFillArrowLeftCircleFill className="arrow" onClick={last} />
-          <BsFillArrowRightCircleFill className="arrow" onClick={next} />
-        </div>
-        <div>{`${currentCard + 1}/${cards.length}`}</div>
+      <div className="buttons">
+        <BsPlusCircleFill className="button" onClick={handleShow} />
       </div>
+      <div>
+        <Flashcard card={cards[currentCard]} key={currentCard} />
+        <div className="counter">
+          <div className="arrows">
+            <BsFillArrowLeftCircleFill className="arrow" onClick={last} />
+            <BsFillArrowRightCircleFill className="arrow" onClick={next} />
+          </div>
+          <div>{`${currentCard + 1} / ${cards.length}`}</div>
+        </div>
+      </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>New Card</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <NewCard />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Card
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

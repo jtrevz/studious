@@ -13,4 +13,17 @@
   height: 4em;
   width: 4em;
   padding: 6%;
+  cursor: pointer;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 1%;
+}
+
+.button {
+  color: #e85a4f;
+  height: 2em;
+  width: 2em;
+  cursor: pointer;
 }
