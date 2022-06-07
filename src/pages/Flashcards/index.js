@@ -16,7 +16,12 @@ import { collection, getDocs } from "firebase/firestore";
 export default function Flashcards() {
   const [cards, setCards] = useState(sampleInfo);
   const [currentCard, setCurrentCard] = useState(0);
+
+  const [newFront, setNewFront] = useState("");
+  const [newBack, setNewBack] = useState("");
+
   const cardCollectionRef = collection(db, "card");
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
