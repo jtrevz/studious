@@ -3,14 +3,16 @@ import "./App.css";
 import Flashcards from "./pages/Flashcards";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
-import NewCardContext from "./contexts/NewCardContext";
+import { NewCardProvider } from "./contexts/NewCardContext";
 
 function App() {
   return (
     <div className="App">
       <NavBar />
       <div className="content">
-        <Flashcards />
+        <NewCardProvider>
+          <Flashcards />
+        </NewCardProvider>
       </div>
     </div>
   );
