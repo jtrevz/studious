@@ -3,10 +3,14 @@ import React, { createContext, useState } from "react";
 const NewCardContext = createContext();
 
 export function NewCardProvider({ children }) {
-  const [NewCardInfo, setNewCardInfo] = useState({});
+  const [newCard, setNewCard] = useState({ front: "", back: "" });
+
+  const createNewCard = (newfront, newback) => {
+    setNewCard({ front: newfront, back: newback });
+  };
 
   return (
-    <NewCardContext.Provider value={NewCardInfo}>
+    <NewCardContext.Provider value={{ newCard, createNewCard }}>
       {children}
     </NewCardContext.Provider>
   );

@@ -10,9 +10,7 @@ function App() {
     <div className="App">
       <NavBar />
       <div className="content">
-        <NewCardContext.Provider>
-          <Flashcards />
-        </NewCardContext.Provider>
+        <Flashcards />
       </div>
     </div>
   );

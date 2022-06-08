@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Set from "../../components/Set";
 import Flashcard from "../../components/Flashcard";
 import NewCard from "../../components/NewCard";
@@ -12,20 +12,19 @@ import {
 import "./styles.css";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import NewCardContext from "./../../contexts/NewCardContext";
 
 export default function Flashcards() {
   const [cards, setCards] = useState(sampleInfo);
   const [currentCard, setCurrentCard] = useState(0);
 
-  const [newFront, setNewFront] = useState("");
-  const [newBack, setNewBack] = useState("");
-
-  const cardCollectionRef = collection(db, "card");
-
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const { newCard } = useContext(NewCardContext);
+
+  const cardCollectionRef = collection(db, "card");
 
   const next = () => {
     if (currentCard === cards.length - 1) {

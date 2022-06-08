@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
-import NewCardContext  from '../../contexts/NewCardContext';
+import { Modal, Button } from "react-bootstrap";
+import NewCardContext from "../../contexts/NewCardContext";
 
 export default function NewCard(props) {
-  const { NewCardInfo } = useContext(NewCardContext);
+  const [front, setFront] = useState("");
+  const [back, setBack] = useState("");
 
-  const [newFront, setNewFront] = useState("");
-  const [newBack, setNewBack] = useState("");
+  const { createNewCard } = useContext(NewCardContext);
 
   return (
     <div>
@@ -17,7 +18,7 @@ export default function NewCard(props) {
             type="front"
             placeholder="studium"
             autoFocus
-            onChange={(e) => setNewFront(e.target.value)}
+            onChange={(e) => createNewCard({ front: e.target.value })}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Card Back, ">
@@ -27,7 +28,7 @@ export default function NewCard(props) {
             type="back"
             placeholder="study, zeal, pursuit "
             rows={3}
-            onChange={(e) => setNewBack(e.target.value)}
+            onChange={(e) => createNewCard({ back: e.target.value })}
           />
         </Form.Group>
       </Form>
