@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Flashcards from "./pages/Flashcards";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
 import { NewCardProvider } from "./contexts/NewCardContext";
@@ -17,6 +18,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Flashcards />} />
               <Route exact path="/login" element={<Login />} />
+              <Route exact path="/signup" element={<Signup />} />
             </Routes>
           </NewCardProvider>
         </Router>
