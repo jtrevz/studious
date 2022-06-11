@@ -30,10 +30,19 @@
   border-radius: 0.25rem;
 }
 
+.bigBanner {
+  margin-bottom: 5%;
+}
+
+.smallBanner {
+  font-size: 0.95em;
+  margin-right: 2%;
+}
+
 .smallBanner a {
   color: #376e6f;
 }
 
 .btn-custom {
-  margin-top: 10%;
+  margin-top: 8%;
 }
