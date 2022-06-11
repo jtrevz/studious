@@ -7,7 +7,7 @@ export default function NewCard(props) {
   const [front, setFront] = useState("");
   const [back, setBack] = useState("");
 
-  const { createNewCard } = useContext(NewCardContext);
+  const { createNewFront, createNewBack } = useContext(NewCardContext);
 
   return (
     <div>
@@ -18,7 +18,7 @@ export default function NewCard(props) {
             type="front"
             placeholder="studium"
             autoFocus
-            onChange={(e) => createNewCard({ front: e.target.value })}
+            onChange={(e) => createNewFront({ front: e.target.value })}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Card Back, ">
@@ -28,7 +28,7 @@ export default function NewCard(props) {
             type="back"
             placeholder="study, zeal, pursuit "
             rows={3}
-            onChange={(e) => createNewCard({ back: e.target.value })}
+            onChange={(e) => createNewBack({ back: e.target.value })}
           />
         </Form.Group>
       </Form>

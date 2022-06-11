@@ -22,12 +22,12 @@ export default function Flashcards() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const newCard = useContext(NewCardContext);
+  const { front, back } = useContext(NewCardContext);
 
   const cardCollectionRef = collection(db, "card");
 
   useEffect(() => {
-    console.log(newCard);
+    console.log(front, back);
   });
 
   const next = () => {
