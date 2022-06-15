@@ -18,32 +18,45 @@
   margin-top: 3%;
   background-color: #376e6f;
   border-radius: 0.25rem;
+  box-shadow: inset 11px 11px 22px #2f5e5e, inset -11px -11px 22px #3f7f80;
 }
 
 .brand h1 {
   font-size: 4em;
   color: white;
+  margin-right: 2%;
 }
 
 .form {
-  padding: 2%;
-  border-radius: 0.25rem;
+  margin-top: 2.5%;
+  background-color: white;
+  padding: 5% !important;
+  border-radius: 0.5rem;
+  border: 1px solid;
+  border-color: #ccc;
+  box-shadow: 11px 11px 22px #c1c0be, -11px -11px 22px #ffffff;
 }
 
 .bigBanner {
-  margin-bottom: 5%;
+  margin-bottom: 4%;
 }
 
 .smallBanner {
-  font-size: 0.95em;
-  margin-right: 2%;
-  margin-bottom: 5%;
+  font-size: 0.85rem;
+  color: black;
+  font-weight: 200;
+  margin-left: 2%;
+  margin-bottom: 3%;
 }
 
 .smallBanner a {
   color: #376e6f;
 }
 
+a {
+  display: inline-block;
+}
+
 .btn-custom {
-  margin-top: 8%;
+  margin-top: 0% !important;
 }

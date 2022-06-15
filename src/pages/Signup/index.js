@@ -14,7 +14,7 @@ export default function Signup() {
         <Form className="form col-lg-6 col-md-8 col-sm-10 col-xs-11">
           <h3 className="bigBanner">Welcome to studious!</h3>
 
-          <Row>
+          <Row className="col-xs-12">
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>First Name</Form.Label>
@@ -48,7 +48,7 @@ export default function Signup() {
             }}
             className="btn-custom float-end"
           >
-            Log In
+            Sign Up
           </Button>
         </Form>
       </div>

@@ -24,9 +24,11 @@
 .brand h1 {
   font-size: 4em;
   color: white;
+  margin-right: 2%;
 }
 
 .form {
+  margin-top: 2.5%;
   background-color: white;
   padding: 2%;
   border-radius: 0.5rem;
@@ -49,5 +51,5 @@
 }
 
 .btn-custom {
-  margin-top: 8%;
+  margin-top: 5%;
 }
