@@ -40,7 +40,12 @@ export default function Signup() {
             Already have an account? <a href="./login">Login here</a>
           </h5>
           <Button
-            style={{ backgroundColor: "#376e6f", borderColor: "#376e6f" }}
+            style={{
+              backgroundColor: "#376e6f",
+              borderColor: "#376e6f",
+              boxShadow:
+                "inset 6px 6px 8px #316263, inset -6px -6px 8px #3d7a7b",
+            }}
             className="btn-custom float-end"
           >
             Log In

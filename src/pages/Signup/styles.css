@@ -1,48 +1,53 @@
 .loginContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .brand {
-    display: flex;
-    padding: 1% 15% 1% 15%;
-    margin-bottom: 3%;
-    margin-top: 3%;
-    background-color: #376e6f;
-    border-radius: 0.25rem;
-  }
-  
-  .brand h1 {
-    font-size: 4em;
-    color: white;
-  }
-  
-  .form {
-    padding: 2%;
-    border-radius: 0.25rem;
-  }
-  
-  .bigBanner {
-    margin-bottom: 5%;
-  }
-  
-  .smallBanner {
-    font-size: 0.95em;
-    margin-right: 2%;
-  }
-  
-  .smallBanner a {
-    color: #376e6f;
-  }
-  
-  .btn-custom {
-    margin-top: 8%;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.brand {
+  display: flex;
+  padding: 1% 15% 1% 15%;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  background-color: #376e6f;
+  border-radius: 0.25rem;
+  box-shadow: inset 11px 11px 22px #2f5e5e, inset -11px -11px 22px #3f7f80;
+}
+
+.brand h1 {
+  font-size: 4em;
+  color: white;
+}
+
+.form {
+  background-color: white;
+  padding: 2%;
+  border-radius: 0.5rem;
+  border: 1px solid;
+  border-color: #ccc;
+  box-shadow: 11px 11px 22px #c1c0be, -11px -11px 22px #ffffff;
+}
+
+.bigBanner {
+  margin-bottom: 5%;
+}
+
+.smallBanner {
+  font-size: 0.95em;
+  margin-right: 2%;
+}
+
+.smallBanner a {
+  color: #376e6f;
+}
+
+.btn-custom {
+  margin-top: 8%;
+}
