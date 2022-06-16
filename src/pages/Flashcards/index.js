@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useContext } from "react";
-import Set from "../../components/Set";
+// import Set from "../../components/Set";
 import Flashcard from "../../components/Flashcard";
 import NewCard from "../../components/NewCard";
-import { Modal, Button } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
   BsPlusCircleFill,
-  BsPencil,
+  // BsPencil,
 } from "react-icons/bs";
 import "./styles.css";
 import { db } from "../../firebase";

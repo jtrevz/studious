@@ -4,9 +4,9 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { NavDropdown } from "react-bootstrap";
 import { BsHourglassSplit } from "react-icons/bs";
-import { BsLightbulbFill } from "react-icons/bs";
-import { BsLightbulb } from "react-icons/bs";
-import { BsPerson } from "react-icons/bs";
+// import { BsLightbulbFill } from "react-icons/bs";
+// import { BsLightbulb } from "react-icons/bs";
+// import { BsPerson } from "react-icons/bs";
 
 export default function NavBar() {
   return (

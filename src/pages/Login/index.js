@@ -1,12 +1,7 @@
 import React from "react";
-import {
-  Row,
-  Col,
-  Container,
-  Form,
-  Button,
-  FloatingLabel,
-} from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { BsHourglassSplit } from "react-icons/bs";
 import "./styles.css";
 
@@ -19,8 +14,6 @@ export default function Login() {
           <BsHourglassSplit size={80} color="white" />
         </div>
         <Form className="form col-lg-6 col-md-8 col-sm-10 col-xs-11">
-          
-
           <FloatingLabel
             controlId="floatingemail"
             label="Email address"

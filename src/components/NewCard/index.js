@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import Form from "react-bootstrap/Form";
-import { Modal, Button } from "react-bootstrap";
 import NewCardContext from "../../contexts/NewCardContext";
 
 export default function NewCard(props) {
-  const [front, setFront] = useState("");
-  const [back, setBack] = useState("");
+  // const [front, setFront] = useState("");
+  // const [back, setBack] = useState("");
 
   const { createNewFront, createNewBack } = useContext(NewCardContext);
 
