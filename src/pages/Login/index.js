@@ -19,6 +19,8 @@ export default function Login() {
           <BsHourglassSplit size={80} color="white" />
         </div>
         <Form className="form col-lg-6 col-md-8 col-sm-10 col-xs-11">
+          
+
           <FloatingLabel
             controlId="floatingemail"
             label="Email address"
