@@ -4,6 +4,7 @@ import "./styles.css";
 
 export default function Flashcard({ card }) {
   const [flip, setFlip] = useState(false);
+
   return (
     <Card
       className={`flashcard ${flip ? "flip" : ""}`}

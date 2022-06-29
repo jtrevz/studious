@@ -3,7 +3,6 @@ import React, { useEffect, useState, useContext } from "react";
 import Flashcard from "../../components/Flashcard";
 import NewCard from "../../components/NewCard";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
@@ -22,13 +21,7 @@ export default function Flashcards() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const { front, back } = useContext(NewCardContext);
   const cardCollectionRef = collection(db, "card");
-
-  useEffect(() => {
-    console.log(front, back);
-  });
 
   const next = () => {
     if (currentCard === cards.length - 1) {
@@ -44,11 +37,12 @@ export default function Flashcards() {
     return setCurrentCard(currentCard - 1);
   };
 
+  const getCards = async () => {
+    const data = await getDocs(cardCollectionRef);
+    setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+
   useEffect(() => {
-    const getCards = async () => {
-      const data = await getDocs(cardCollectionRef);
-      setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
     getCards();
   }, []);
 
@@ -71,7 +65,7 @@ export default function Flashcards() {
         <Modal.Header closeButton>
           <Modal.Title>New Card</Modal.Title>
         </Modal.Header>
-          <NewCard  handleClose={handleClose}/>
+        <NewCard handleClose={handleClose} getCards={getCards} />
       </Modal>
     </div>
   );
