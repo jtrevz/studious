@@ -24,7 +24,6 @@ export default function Flashcards() {
   const handleShow = () => setShow(true);
 
   const { front, back } = useContext(NewCardContext);
-
   const cardCollectionRef = collection(db, "card");
 
   useEffect(() => {
@@ -72,17 +71,7 @@ export default function Flashcards() {
         <Modal.Header closeButton>
           <Modal.Title>New Card</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <NewCard />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Card
-          </Button>
-        </Modal.Footer>
+          <NewCard  handleClose={handleClose}/>
       </Modal>
     </div>
   );

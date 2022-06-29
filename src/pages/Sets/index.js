@@ -1,9 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Sets() {
-  return (
-    <div>
-      <div class="mycards"></div>
-    </div>
-  );
+  return <div></div>;
 }

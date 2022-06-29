@@ -6,8 +6,8 @@ export function NewCardProvider({ children }) {
   const [front, setFront] = useState("");
   const [back, setBack] = useState("");
 
-  const createNewFront = (input) => {
-    setFront(input);
+  const addNewCard = (card) => {
+    
   };
 
   const createNewBack = (input) => {
@@ -16,7 +16,7 @@ export function NewCardProvider({ children }) {
 
   return (
     <NewCardContext.Provider
-      value={{ front, back, createNewFront, createNewBack }}
+      value={{ front, back, addNewCard, createNewBack }}
     >
       {children}
     </NewCardContext.Provider>
