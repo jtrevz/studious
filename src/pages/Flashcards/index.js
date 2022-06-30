@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import Flashcard from "../../components/Flashcard";
 import NewCard from "../../components/NewCard";
 import Modal from "react-bootstrap/Modal";
+import Spinner from "react-bootstrap/Spinner";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
@@ -15,7 +16,7 @@ import { collection, getDocs } from "firebase/firestore";
 import NewCardContext from "./../../utils/NewCardContext";
 
 export default function Flashcards() {
-  const [cards, setCards] = useState(sampleInfo);
+  const [cards, setCards] = useState([]);
   const [currentCard, setCurrentCard] = useState(0);
 
   const [show, setShow] = useState(false);
@@ -39,7 +40,7 @@ export default function Flashcards() {
 
   const getCards = async () => {
     const data = await getDocs(cardCollectionRef);
-    setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
   useEffect(() => {
@@ -52,7 +53,11 @@ export default function Flashcards() {
         <BsPlusCircleFill className="button" onClick={handleShow} />
       </div>
       <div className="flash">
-        <Flashcard card={cards[currentCard]} key={currentCard} />
+        {cards.length > 0 ? (
+          <Flashcard card={cards[currentCard]} key={currentCard} />
+        ) : (
+          <Spinner animation="border" />
+        )}
         <div className="counter">
           <div className="arrows">
             <BsFillArrowLeftCircleFill className="arrow" onClick={last} />
