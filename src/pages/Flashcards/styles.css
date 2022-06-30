@@ -1,11 +1,20 @@
-.counter {
+.flash {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+}
+
 .arrows {
+  display: flex;
   padding: 1%;
 }
 .arrow {

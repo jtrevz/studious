@@ -7,7 +7,7 @@ import Signup from "./pages/Signup";
 import Sets from "./pages/Sets";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
-import { NewCardProvider } from "./contexts/NewCardContext";
+import { NewCardProvider } from "./utils/NewCardContext";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
               <Route exact path="/" element={<Flashcards />} />
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/signup" element={<Signup />} />
-              <Route exact path='sets' element={<Sets/>}/>
+              <Route exact path="sets" element={<Sets />} />
             </Routes>
           </NewCardProvider>
         </Router>

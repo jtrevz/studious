@@ -8,8 +8,8 @@
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
   background-color: white;
   transform-style: preserve-3d;
-  height: 150px;
-  width: 100%;
+  height: 20rem;
+  width: 35rem;
   transition: 150ms;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0));
   cursor: pointer;
@@ -43,4 +43,11 @@
 
 .card .back {
   transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    width: 100%;
+    height: 15rem;
+  }
 }

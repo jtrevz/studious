@@ -12,7 +12,7 @@ import {
 import "./styles.css";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
-import NewCardContext from "./../../contexts/NewCardContext";
+import NewCardContext from "./../../utils/NewCardContext";
 
 export default function Flashcards() {
   const [cards, setCards] = useState(sampleInfo);
@@ -51,7 +51,7 @@ export default function Flashcards() {
       <div className="buttons">
         <BsPlusCircleFill className="button" onClick={handleShow} />
       </div>
-      <div>
+      <div className="flash">
         <Flashcard card={cards[currentCard]} key={currentCard} />
         <div className="counter">
           <div className="arrows">
