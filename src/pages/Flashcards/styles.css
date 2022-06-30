@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Joan&family=Nunito:wght@400&display=swap");
+
 .flash {
   display: flex;
   flex-direction: column;
@@ -10,7 +12,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2%;
 }
 
 .arrows {
@@ -21,8 +22,14 @@
   color: #e85a4f;
   height: 4em;
   width: 4em;
-  padding: 6%;
+  padding: 10%;
   cursor: pointer;
+}
+
+.count {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.3rem;
+  color: #555;
 }
 .buttons {
   display: flex;
@@ -35,4 +42,34 @@
   height: 2em;
   width: 2em;
   cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 576px) {
+  .buttons {
+    margin-bottom: 1%;
+  }
+  .button {
+    height: 2.8em;
+    width: 2.8em;
+  }
+  .flash {
+    margin: 6% 4% 6% 4%;
+  }
+
+  .arrow {
+    height: 5.5em;
+    width: 5.5em;
+    padding: 1%;
+  }
+  .last {
+    margin-right: 20%;
+  }
+  .next {
+    margin-left: 20%;
+  }
+  .modal {
+    margin-top: 20%;
+  }
 }

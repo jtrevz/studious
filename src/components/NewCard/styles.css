@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Joan&family=Nunito:wght@400&display=swap");
+
+.form-label {
+  font-family: Nunito;
+  font-size: 1.2em;
+}
+
+@media screen and (max-width: 576px) {
+  /* .form-label {
+    font-family: Nunito;
+    font-size: 1.2em;
+  } */
+}

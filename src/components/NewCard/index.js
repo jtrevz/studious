@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 // import NewCardContext from "../../contexts/NewCardContext";
 import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
+import "./styles.css";
 
 export default function NewCard({ handleClose, getCards }) {
   const [newFront, setNewFront] = useState("");
@@ -43,7 +44,7 @@ export default function NewCard({ handleClose, getCards }) {
       </Modal.Body>
       <Modal.Footer>
         <Button
-          variant="primary"
+          style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
           onClick={() => {
             createNewCard();
             handleClose();

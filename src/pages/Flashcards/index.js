@@ -60,10 +60,10 @@ export default function Flashcards() {
         )}
         <div className="counter">
           <div className="arrows">
-            <BsFillArrowLeftCircleFill className="arrow" onClick={last} />
-            <BsFillArrowRightCircleFill className="arrow" onClick={next} />
+            <BsFillArrowLeftCircleFill className="arrow last" onClick={last} />
+            <BsFillArrowRightCircleFill className="arrow next" onClick={next} />
           </div>
-          <div>{`${currentCard + 1} / ${cards.length}`}</div>
+          <div className="count">{`${currentCard + 1} / ${cards.length}`}</div>
         </div>
       </div>
       <Modal show={show} onHide={handleClose}>

@@ -44,10 +44,19 @@
 .card .back {
   transform: rotateY(180deg);
 }
+.modal-header {
+  font-family: "Nunito";
+}
 
 @media screen and (max-width: 576px) {
   .card {
     width: 100%;
     height: 15rem;
+  }
+  .front {
+    font-size: 3em;
+  }
+  .back {
+    font-size: 1.5em;
   }
 }
