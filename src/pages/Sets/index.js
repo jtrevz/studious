@@ -6,6 +6,7 @@ import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Stack from "react-bootstrap/Stack";
 import "./styles.css";
 
 export default function Sets() {
@@ -25,19 +26,26 @@ export default function Sets() {
       <Container fluid>
         <Row>
           <Col>
-            <h1>Latin Ch. 1</h1>
+            <h1 className="setName">Latin Ch. 1</h1>
           </Col>
           <Col>
-            <div>
-              <BsFillLightningFill />
-              <BsPencil />
+            <div className="setEdit">
+              <BsFillLightningFill className="edit" />
+              <BsPencil className="edit" />
             </div>
           </Col>
         </Row>
         <Row>
           <Col>
             {cards.length > 0 ? (
-              cards.map((card) => <div>{card.front}</div>)
+              cards.map((card) => (
+                <Stack direction="horizontal" className="flashcard">
+                  <div className="term col-4">{card.front}</div>
+                  <div className="line"></div>
+                  <div className="description">{card.back}</div>
+                  <Col></Col>
+                </Stack>
+              ))
             ) : (
               <Spinner animation="border" />
             )}

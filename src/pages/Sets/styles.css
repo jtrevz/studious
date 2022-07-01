@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Joan&family=Nunito:wght@400&display=swap");
+
+.setName {
+  font-family: "Joan", serif;
+}
+
+.setEdit {
+  display: flex;
+  justify-content: end;
+}
+
+.edit {
+  color: #e85a4f;
+  height: 1.3em;
+  width: 1.3em;
+  cursor: pointer;
+  margin: 3.8%;
+}
+
+.flashcard {
+  background-color: white;
+  margin: 2%;
+  border-radius: 3px;
+}
+
+.term {
+  text-align: center;
+  font-family: "Joan", serif;
+  font-size: 1.3em;
+}
+
+.description {
+  text-align: left;
+  padding: 2%;
+  font-size: 1em;
+  font-family: "Nunito", sans-serif;
+  color: #555;
+}
+.line {
+  border-left: 2px solid lightgray;
+  min-height: 5em;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+}
