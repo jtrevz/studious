@@ -51,6 +51,7 @@ export default function Flashcards() {
     <div>
       <div className="buttons">
         <BsPlusCircleFill className="button" onClick={handleShow} />
+        {/* <BsPencil className="button pencil" /> */}
       </div>
       <div className="flash">
         {cards.length > 0 ? (
@@ -75,21 +76,3 @@ export default function Flashcards() {
     </div>
   );
 }
-
-const sampleInfo = [
-  {
-    id: 0,
-    front: "studium",
-    back: "to study or pursuit",
-  },
-  {
-    id: 1,
-    front: "amicus",
-    back: "friend, companion",
-  },
-  {
-    id: 2,
-    front: "pater",
-    back: "father",
-  },
-];
