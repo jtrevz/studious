@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
-import { BsFillLightningFill, BsPencil } from "react-icons/bs";
+import { BsFillLightningFill, BsPencil, BsTrash } from "react-icons/bs";
 import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -42,8 +42,11 @@ export default function Sets() {
                 <Stack direction="horizontal" className="flashcard">
                   <div className="term col-4">{card.front}</div>
                   <div className="line"></div>
-                  <div className="description">{card.back}</div>
-                  <Col></Col>
+                  <div className="description col-8">{card.back}</div>
+                  <div>
+                    <BsTrash />
+                    <BsPencil />
+                  </div>
                 </Stack>
               ))
             ) : (
