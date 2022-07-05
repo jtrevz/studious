@@ -42,3 +42,16 @@
   margin-top: 1.5%;
   margin-bottom: 1.5%;
 }
+
+.cardBtn {
+  height: 25px;
+  width: 25px;
+  background-color: white;
+  padding: 6%;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20%;
+  color: #e85a4f;
+}
