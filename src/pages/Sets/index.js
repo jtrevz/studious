@@ -44,10 +44,10 @@ export default function Sets() {
                   <div className="line"></div>
                   <div className="description col-8">{card.back}</div>
                   <div>
-                    <div className="cardBtn">
+                    <div className="cardBtn2">
                       <BsTrash />
                     </div>
-                    <div className="cardBtn">
+                    <div className="cardBtn2">
                       <BsPencil />
                     </div>
                   </div>
