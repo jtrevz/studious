@@ -5,6 +5,7 @@ import Flashcards from "./pages/Flashcards";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Sets from "./pages/Sets";
+import Set from "./pages/Set";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
 import { NewCardProvider } from "./utils/NewCardContext";
@@ -21,6 +22,7 @@ function App() {
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/signup" element={<Signup />} />
               <Route exact path="sets" element={<Sets />} />
+              <Route exact path="set" element={<Set />} />
             </Routes>
           </NewCardProvider>
         </Router>
