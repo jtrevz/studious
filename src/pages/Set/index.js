@@ -10,7 +10,7 @@ export default function Set() {
     <div>
       <Container fluid>
         <Row>
-          <h1>Your Sets</h1>
+          <h1 className="pageTitle">Your Sets</h1>
         </Row>
         <Row>
           {sets.map((set) => (

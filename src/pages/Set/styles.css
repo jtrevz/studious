@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Joan&family=Nunito:wght@400&display=swap");
+.pageTitle {
+  font-family: "Joan", serif;
+}
 
 .cardColumn {
   display: flex;
@@ -7,6 +10,7 @@
 }
 .setCard {
   margin: 5%;
+  padding: 2%;
   display: flex;
   justify-content: center;
   align-items: center;
