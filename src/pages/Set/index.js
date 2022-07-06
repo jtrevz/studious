@@ -10,17 +10,17 @@ export default function Set() {
   return (
     <div>
       <Container fluid>
-        <Row className="header">
-          <div>
+        <Row>
+          <Col>
             <h1 className="pageTitle">Your Sets</h1>
-          </div>
-          <div className="addButton">
+          </Col>
+          <Col className="addButtonContainer">
             <BsPlusCircleFill className="addButton" />
-          </div>
+          </Col>
         </Row>
         <Row>
           {sets.map((set) => (
-            <Col s={12} md={6} lg={4} xl={4} className="cardColumn">
+            <Col s={12} md={6} lg={4} xl={4} xxl={3} className="cardColumn">
               <Card className="setCard" key={set.name}>
                 <Card.Title className="setName">{set.name}</Card.Title>
                 <Card.Subtitle className="cardAmount text-muted">
