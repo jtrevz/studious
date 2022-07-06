@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Joan&family=Nunito:wght@400&display=swap");
+
+.cardColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.setCard {
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12rem;
+  width: 20rem;
+}
+
+.setName {
+  font-family: "Joan", serif;
+  text-align: center;
+}
+
+.cardAmount {
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+}

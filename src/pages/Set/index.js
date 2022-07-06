@@ -14,12 +14,14 @@ export default function Set() {
         </Row>
         <Row>
           {sets.map((set) => (
-            <Card key={set.name}>
-              <Card.Title>{set.name}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">
-                {set.amount} cards
-              </Card.Subtitle>
-            </Card>
+            <Col s={12} md={6} lg={4} xl={4} className="cardColumn">
+              <Card className="setCard" key={set.name}>
+                <Card.Title className="setName">{set.name}</Card.Title>
+                <Card.Subtitle className="cardAmount text-muted">
+                  {set.amount} cards
+                </Card.Subtitle>
+              </Card>
+            </Col>
           ))}
         </Row>
       </Container>
