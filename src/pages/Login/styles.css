@@ -18,7 +18,7 @@
   margin-top: 3%;
   background-color: #376e6f;
   border-radius: 0.25rem;
-  box-shadow: inset 11px 11px 22px #2f5e5e, inset -11px -11px 22px #3f7f80;
+  /* box-shadow: inset 11px 11px 22px #2f5e5e, inset -11px -11px 22px #3f7f80; */
 }
 
 .brand h1 {
@@ -34,7 +34,7 @@
   border-radius: 0.5rem;
   border: 1px solid;
   border-color: #ccc;
-  box-shadow: 11px 11px 22px #c1c0be, -11px -11px 22px #ffffff;
+  box-shadow: 11px 11px 22px #cfcecb, -11px -11px 22px #f7f6f3;
 }
 
 .bigBanner {

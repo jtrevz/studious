@@ -34,10 +34,8 @@ export default function Login() {
           </h5>
           <Button
             style={{
-              backgroundColor: "#376e6f",
-              borderColor: "#376e6f",
-              boxShadow:
-                "inset 6px 6px 8px #316263, inset -6px -6px 8px #3d7a7b",
+              backgroundColor: "#e85a4f",
+              borderColor: "#e85a4f",
             }}
             className="btn-custom float-end"
           >

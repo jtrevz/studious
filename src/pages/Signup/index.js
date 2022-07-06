@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col, Form, Button, FloatingLabel } from "react-bootstrap";
 import { BsHourglassSplit } from "react-icons/bs";
 import "./styles.css";
 
@@ -16,10 +16,17 @@ export default function Signup() {
 
           <Row className="col-xs-12">
             <Col>
-              <Form.Group className="mb-3">
+              {/* <Form.Group className="mb-3">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="fName" placeholder="First Name" />
-              </Form.Group>
+              </Form.Group> */}
+              <FloatingLabel
+                controlId="floatingemail"
+                label="First Name"
+                className="mb-3"
+              >
+                <Form.Control type="email" placeholder="name@example.com" />
+              </FloatingLabel>
             </Col>
             <Col>
               <Form.Group className="mb-3">
@@ -41,10 +48,8 @@ export default function Signup() {
           </h5>
           <Button
             style={{
-              backgroundColor: "#376e6f",
-              borderColor: "#376e6f",
-              boxShadow:
-                "inset 6px 6px 8px #316263, inset -6px -6px 8px #3d7a7b",
+              backgroundColor: "#e85a4f",
+              borderColor: "#e85a4f",
             }}
             className="btn-custom float-end"
           >
