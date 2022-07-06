@@ -25,7 +25,7 @@ export default function Sets() {
     <div>
       <Container fluid>
         <Row>
-          <Col>
+          <Col className="setContainer">
             <h1 className="setName">Latin Ch. 1</h1>
           </Col>
           <Col>

@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Joan&family=Nunito:wght@400&display=swap");
-
+.setContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
 .setName {
   font-family: "Joan", serif;
 }
@@ -89,4 +93,3 @@
     font-size: 1.3em;
   }
 }
-
