@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
+import { BsPlusCircleFill } from "react-icons/bs";
 import { Row, Col } from "react-bootstrap";
 import "./styles.css";
 
@@ -9,8 +10,13 @@ export default function Set() {
   return (
     <div>
       <Container fluid>
-        <Row>
-          <h1 className="pageTitle">Your Sets</h1>
+        <Row className="header">
+          <div>
+            <h1 className="pageTitle">Your Sets</h1>
+          </div>
+          <div>
+            <BsPlusCircleFill />
+          </div>
         </Row>
         <Row>
           {sets.map((set) => (
