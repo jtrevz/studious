@@ -20,29 +20,22 @@ export default function Signup() {
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="fName" placeholder="First Name" />
               </Form.Group> */}
-              <FloatingLabel
-                controlId="floatingemail"
-                label="First Name"
-                className="mb-3"
-              >
-                <Form.Control type="email" placeholder="name@example.com" />
+              <FloatingLabel label="First Name" className="mb-3">
+                <Form.Control type="firstName" placeholder="Jane" />
               </FloatingLabel>
             </Col>
             <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control type="lName" placeholder="Last Name" />
-              </Form.Group>
+              <FloatingLabel label="Last Name" className="mb-3">
+                <Form.Control type="lastName" placeholder="Smith" />
+              </FloatingLabel>
             </Col>
           </Row>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
+          <FloatingLabel label="Email Address" className="mb-3">
+            <Form.Control type="email" placeholder="name@example.com" />
+          </FloatingLabel>
+          <FloatingLabel label="Password" className="mb-3">
+                <Form.Control type="password" placeholder="pass123" />
+              </FloatingLabel>
           <h5 className="smallBanner">
             Already have an account? <a href="./login">Login here</a>
           </h5>
