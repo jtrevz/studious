@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Joan&family=Nunito:wght@400&display=swap");
 
 .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
 .pageTitle {
   font-family: "Joan", serif;
+}
+
+.addButtonContainer {
+  /* display: flex;
+  justify-content: center; */
 }
 
 .cardColumn {

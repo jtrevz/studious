@@ -14,8 +14,8 @@ export default function Set() {
           <div>
             <h1 className="pageTitle">Your Sets</h1>
           </div>
-          <div>
-            <BsPlusCircleFill />
+          <div className="addButton">
+            <BsPlusCircleFill className="addButton" />
           </div>
         </Row>
         <Row>
