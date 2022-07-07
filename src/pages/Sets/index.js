@@ -42,8 +42,8 @@ export default function Sets() {
                 <Stack direction="horizontal" className="flashcard">
                   <div className="term col-4">{card.front}</div>
                   <div className="line"></div>
-                  <div className="description col-8">{card.back}</div>
-                  <div>
+                  <div className="description col-7">{card.back}</div>
+                  <div className="col-1 cardBtn1">
                     <div className="cardBtn2">
                       <BsTrash />
                     </div>
