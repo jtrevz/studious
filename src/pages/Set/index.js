@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
@@ -10,6 +11,7 @@ import { Row, Col } from "react-bootstrap";
 import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import "./styles.css";
+import { NewCardContext } from "./../../utils/NewCardContext";
 
 export default function Set() {
   const [sets, setSets] = useState(sampleSets);
@@ -19,6 +21,13 @@ export default function Set() {
   const createNewSet = async () => {
     await addDoc(cardCollectionRef, { name: newSet });
   };
+
+  const navigate = useNavigate();
+  const navigateNewSet = () => {
+    navigate("/newset");
+  };
+
+  const {};
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -70,11 +79,11 @@ export default function Set() {
             </Form.Group>
             <Modal.Footer>
               <Button
-              onClick={() => {
-                createNewSet();
-                handleClose();
-                
-              }}
+                onClick={() => {
+                  createNewSet();
+                  handleClose();
+                  navigateNewSet();
+                }}
               >
                 Create Set
               </Button>
