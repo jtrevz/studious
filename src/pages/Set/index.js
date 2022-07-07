@@ -1,12 +1,29 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
+import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { Row, Col } from "react-bootstrap";
+import { db } from "../../firebase";
+import { collection, addDoc } from "firebase/firestore";
 import "./styles.css";
 
 export default function Set() {
   const [sets, setSets] = useState(sampleSets);
+  const [newSet, setNewSet] = useState("");
+
+  const cardCollectionRef = collection(db, "sets");
+  const createNewSet = async () => {
+    await addDoc(cardCollectionRef, { name: newSet });
+  };
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div>
       <Container fluid>
@@ -15,7 +32,7 @@ export default function Set() {
             <h1 className="pageTitle">Your Sets</h1>
           </Col>
           <Col className="addButtonContainer">
-            <BsPlusCircleFill className="addButton" />
+            <BsPlusCircleFill className="addButton" onClick={handleShow} />
           </Col>
         </Row>
         <Row>
@@ -31,6 +48,40 @@ export default function Set() {
           ))}
         </Row>
       </Container>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title className="">Create New Set</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <FloatingLabel
+                controlId="floatingName"
+                label="Set Name"
+                className="mb-3"
+              >
+                <Form.Control
+                  type="Name"
+                  placeholder="Latin Ch. 1"
+                  autoFocus
+                  onChange={(e) => setNewSet(e.target.value)}
+                ></Form.Control>
+              </FloatingLabel>
+            </Form.Group>
+            <Modal.Footer>
+              <Button
+              onClick={() => {
+                createNewSet();
+                handleClose();
+                
+              }}
+              >
+                Create Set
+              </Button>
+            </Modal.Footer>
+          </Form>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }
