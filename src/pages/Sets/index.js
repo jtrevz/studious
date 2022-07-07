@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Stack from "react-bootstrap/Stack";
-import { updateDoc, doc } from "firebase/firestore";
+import { updateDoc, doc, deleteDoc } from "firebase/firestore";
 import "./styles.css";
 
 export default function Sets() {
@@ -40,6 +40,11 @@ export default function Sets() {
     await updateDoc(cardDoc, updates);
   };
 
+  const deleteCard = async (id) => {
+    const cardDoc = doc(db, "card", id);
+    await deleteDoc(cardDoc);
+  };
+
   useEffect(() => {
     getCards();
   }, []);
@@ -67,7 +72,12 @@ export default function Sets() {
                   <div className="description col-7">{card.back}</div>
                   <div className="col-1 cardBtn1">
                     <div className="cardBtn2">
-                      <BsTrash />
+                      <BsTrash
+                        onClick={() => {
+                          deleteCard(card.id);
+                          getCards();
+                        }}
+                      />
                     </div>
                     <div className="cardBtn2">
                       <BsPencil
