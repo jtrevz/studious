@@ -1,14 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Joan&family=Nunito:wght@600&display=swap");
+
 .page-footer {
   background-color: #376e6f;
 }
 
+.foot {
+  width: 100%;
+}
+
 .Icon {
   color: white;
-  margin: 10%;
-  height: 3.5em;
-  width: 3.5em;
+  margin: 5%;
+  height: 1.5em;
+  width: 1.5em;
+}
+.contact {
+  color: white;
+  font-family: "Nunito", sans-serif;
 }
 
 .vline {
-    
+  border-left: 1px solid #e85a4f;
+  min-height: 5em;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.contactIc {
+  display: inline;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.ic {
+  height: 1.3rem;
+  width: 1.3rem;
+  padding: 1.5%;
 }

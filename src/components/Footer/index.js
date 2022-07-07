@@ -3,7 +3,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { MdAlternateEmail } from "react-icons/md";
+import { MdAlternateEmail, MdEmail } from "react-icons/md";
+import { BsFillHouseDoorFill, BsTelephoneFill } from "react-icons/bs";
 import "./styles.css";
 
 export default function Footer() {
@@ -11,8 +12,11 @@ export default function Footer() {
     <div>
       <footer className="page-footer">
         <Container>
-          <Row>
-            <Col md={6} className="py-3 d-flex justify-content-center">
+          <Row className="foot">
+            <Col
+              md={6}
+              className="py-3 d-flex justify-content-start align-items-center"
+            >
               <MdAlternateEmail className="Icon" />
               <FaGithub className="Icon" />
               <FaLinkedinIn className="Icon" />
@@ -21,16 +25,28 @@ export default function Footer() {
               md={6}
               className="py-3 d-flex justify-content-center align-items-center"
             >
-              <div>Contact</div>
+              <div className="contact">CONTACT</div>
               <div className="vline"></div>
-              <div></div>
+              <div className="contactInfo">
+                <div className="contactIc d-flex flex-direction-row">
+                  <BsFillHouseDoorFill className="ic" />{" "}
+                  <span>Houston, TX</span>
+                </div>
+                <div className="contactIc d-flex flex-direction-row">
+                  <MdEmail className="ic" />{" "}
+                  <span>jenny.trevizo2013@gmail.com</span>
+                </div>
+                <div className="contactIc d-flex flex-direction-row">
+                  <BsTelephoneFill className="ic" /> <span>(713) 382-5761</span>
+                </div>
+              </div>
             </Col>
           </Row>
-          {/* <Row>
+          <Row className="foot">
             <Col>
               <div>Jtrevz</div>
             </Col>
-          </Row> */}
+          </Row>
         </Container>
       </footer>
     </div>
