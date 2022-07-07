@@ -11,11 +11,13 @@ import { Row, Col } from "react-bootstrap";
 import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import "./styles.css";
-import { NewCardContext } from "./../../utils/NewCardContext";
+import { useNewCardContext } from "./../../utils/NewCardContext";
 
 export default function Set() {
   const [sets, setSets] = useState(sampleSets);
   const [newSet, setNewSet] = useState("");
+
+  const { estNewSet } = useNewCardContext();
 
   const cardCollectionRef = collection(db, "sets");
   const createNewSet = async () => {
@@ -26,8 +28,6 @@ export default function Set() {
   const navigateNewSet = () => {
     navigate("/newset");
   };
-
-  const {};
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -82,6 +82,7 @@ export default function Set() {
                 onClick={() => {
                   createNewSet();
                   handleClose();
+                  estNewSet(newSet);
                   navigateNewSet();
                 }}
               >
