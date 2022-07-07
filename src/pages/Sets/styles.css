@@ -4,6 +4,17 @@
   justify-content: start;
   align-items: center;
 }
+
+.jFont {
+  font-family: "Joan", serif;
+}
+
+
+.nFont {
+  font-family: "Nunito", sans-serif;
+  font-size: 1em !important;
+}
+
 .setName {
   font-family: "Joan", serif;
 }

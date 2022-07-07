@@ -77,29 +77,32 @@ export default function Sets() {
       </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Card</Modal.Title>
-          <Modal.Body>
-            <Form>
-              <Form.Group>
-                <Form.Control
-                  type="front"
-                  placeholder={updateFront}
-                  onChange={(e) => setUpdateFront(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-              <Form.Group>
-                <Form.Control
-                  type="back"
-                  placeholder={updateBack}
-                  onChange={(e) => setUpdateFront(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-              <Modal.Footer>
-                <Button>Save Changes</Button>
-              </Modal.Footer>
-            </Form>
-          </Modal.Body>
+          <Modal.Title className="jFont">Edit Card</Modal.Title>
         </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Control
+                className="nFont"
+                type="front"
+                defaultValue={updateFront}
+                onChange={(e) => setUpdateFront(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Control
+                className="nFont"
+                as="textarea"
+                type="back"
+                defaultValue={updateBack}
+                onChange={(e) => setUpdateFront(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Modal.Footer>
+              <Button>Save Changes</Button>
+            </Modal.Footer>
+          </Form>
+        </Modal.Body>
       </Modal>
     </div>
   );
