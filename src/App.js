@@ -8,6 +8,7 @@ import Sets from "./pages/Sets";
 import Set from "./pages/Set";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import { NewCardProvider } from "./utils/NewCardContext";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           </NewCardProvider>
         </Router>
       </div>
+      <Footer />
     </div>
   );
 }
