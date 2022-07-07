@@ -2,6 +2,7 @@
 
 .page-footer {
   background-color: #376e6f;
+  /* background-color: #264c4d; */
 }
 
 .foot {
@@ -20,7 +21,7 @@
 }
 
 .vline {
-  border-left: 1px solid #e85a4f;
+  border-left: 1px solid white;
   min-height: 5em;
   margin-top: 2.5%;
   margin-bottom: 2.5%;
@@ -38,4 +39,29 @@
   height: 1.3rem;
   width: 1.3rem;
   padding: 1.5%;
+}
+
+.name {
+  color: white;
+  font-size: 0.6rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 2%;
+  font-family: "Nunito", sans-serif;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+}
+.hline {
+  border-top: 1px solid #e85a4f;
+  min-width: 5em;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+.year {
+  color: #e85a4f;
 }

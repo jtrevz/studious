@@ -33,7 +33,7 @@ export default function Footer() {
                   <span>Houston, TX</span>
                 </div>
                 <div className="contactIc d-flex flex-direction-row">
-                  <MdEmail className="ic" />{" "}
+                  <MdEmail className="ic" />
                   <span>jenny.trevizo2013@gmail.com</span>
                 </div>
                 <div className="contactIc d-flex flex-direction-row">
@@ -43,8 +43,10 @@ export default function Footer() {
             </Col>
           </Row>
           <Row className="foot">
-            <Col>
-              <div>Jtrevz</div>
+            <Col className="bottom">
+              <div className="name">
+                JENNIFER TREVIZO <span className="year">2022</span>
+              </div>
             </Col>
           </Row>
         </Container>
