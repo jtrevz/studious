@@ -42,6 +42,7 @@ export default function Footer() {
               </div>
             </Col>
           </Row>
+          <div className="hline"></div>
           <Row className="foot">
             <Col className="bottom">
               <div className="name">
