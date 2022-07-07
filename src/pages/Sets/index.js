@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Stack from "react-bootstrap/Stack";
+import { updateDoc, doc } from "firebase/firestore";
 import "./styles.css";
 
 export default function Sets() {
@@ -18,6 +19,7 @@ export default function Sets() {
 
   const [updateFront, setUpdateFront] = useState("");
   const [updateBack, setUpdateBack] = useState("");
+  const [updateID, setUpdateID] = useState();
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -26,6 +28,16 @@ export default function Sets() {
   const getCards = async () => {
     const data = await getDocs(cardCollectionRef);
     await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+
+  const updateCard = async (id) => {
+    const cardDoc = doc(db, "card", id);
+    const updates = {
+      front: updateFront,
+      back: updateBack,
+    };
+
+    await updateDoc(cardDoc, updates);
   };
 
   useEffect(() => {
@@ -62,6 +74,7 @@ export default function Sets() {
                         onClick={() => {
                           setUpdateFront(card.front);
                           setUpdateBack(card.back);
+                          setUpdateID(card.id);
                           handleShow();
                         }}
                       />
@@ -95,11 +108,19 @@ export default function Sets() {
                 as="textarea"
                 type="back"
                 defaultValue={updateBack}
-                onChange={(e) => setUpdateFront(e.target.value)}
+                onChange={(e) => setUpdateBack(e.target.value)}
               ></Form.Control>
             </Form.Group>
             <Modal.Footer>
-              <Button>Save Changes</Button>
+              <Button
+                onClick={() => {
+                  updateCard(updateID);
+                  handleClose();
+                  getCards();
+                }}
+              >
+                Save Changes
+              </Button>
             </Modal.Footer>
           </Form>
         </Modal.Body>
