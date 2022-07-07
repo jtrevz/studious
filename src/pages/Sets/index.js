@@ -5,13 +5,23 @@ import { BsFillLightningFill, BsPencil, BsTrash } from "react-icons/bs";
 import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
+import Modal from "react-bootstrap/Modal";
 import Stack from "react-bootstrap/Stack";
 import "./styles.css";
 
 export default function Sets() {
   const [cards, setCards] = useState([]);
   const cardCollectionRef = collection(db, "card");
+
+  const [updateFront, setUpdateFront] = useState("");
+  const [updateBack, setUpdateBack] = useState("");
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const getCards = async () => {
     const data = await getDocs(cardCollectionRef);
@@ -48,7 +58,13 @@ export default function Sets() {
                       <BsTrash />
                     </div>
                     <div className="cardBtn2">
-                      <BsPencil />
+                      <BsPencil
+                        onClick={() => {
+                          setUpdateFront(card.front);
+                          setUpdateBack(card.back);
+                          handleShow();
+                        }}
+                      />
                     </div>
                   </div>
                 </Stack>
@@ -59,6 +75,32 @@ export default function Sets() {
           </Col>
         </Row>
       </Container>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Card</Modal.Title>
+          <Modal.Body>
+            <Form>
+              <Form.Group>
+                <Form.Control
+                  type="front"
+                  placeholder={updateFront}
+                  onChange={(e) => setUpdateFront(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+              <Form.Group>
+                <Form.Control
+                  type="back"
+                  placeholder={updateBack}
+                  onChange={(e) => setUpdateFront(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+              <Modal.Footer>
+                <Button>Save Changes</Button>
+              </Modal.Footer>
+            </Form>
+          </Modal.Body>
+        </Modal.Header>
+      </Modal>
     </div>
   );
 }
