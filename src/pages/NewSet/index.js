@@ -11,21 +11,18 @@ export default function NewSet() {
 
   return (
     <div>
-      <Container>
+      <Container fluid>
         <Row>
-          <Col className="setContainer">
-            <h1 className="setName">{currentSet}</h1>
+          <Col className="setNameContainer">
+            <h1 className="setName">Latin Ch. 2</h1>
           </Col>
         </Row>
-        <Row xs={12} className="cardContainer">
-          <Col sm={12} md={4}>
+        <Row xs={1} className="cardContainer">
+          <Col md={4}>
             <div className="term">hello</div>
           </Col>
-          <Col>
-            <div className="line"></div>
-          </Col>
-          <Col sm={12} md={8}>
-            <div className="description col-sm-12  col-7">hello</div>
+          <Col md={8}>
+            <div className="description">hello</div>
           </Col>
         </Row>
       </Container>

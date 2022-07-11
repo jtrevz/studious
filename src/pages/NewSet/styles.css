@@ -1,4 +1,25 @@
-/* .cardContainer {
+.setNameContainer {
   display: flex;
-  flex-direction: row;
-} */
+  justify-content: flex-start;
+}
+
+.cardContainer {
+  background-color: white;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+}
+
+.term {
+  padding: 5%;
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+}
+
+.description {
+  padding: 5%;
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+}
