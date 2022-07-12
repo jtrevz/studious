@@ -9,8 +9,18 @@ import "./styles.css";
 
 export default function NewSet() {
   const { currentSet } = useNewCardContext();
+  const [input, setInput] = useState([{ front: "", back: "" }]);
 
-  const addCardInput = () => {};
+  const handleFormChange = (i, e) => {
+    let data = [...input];
+    data[i][e.target.name] = e.target.value;
+    setInput(data);
+  };
+
+  const addCardInput = () => {
+    let newInput = { front: "", back: "" };
+    setInput([...input, newInput]);
+  };
 
   return (
     <div>
@@ -22,25 +32,34 @@ export default function NewSet() {
         </Row>
         <Row xs={1} className="cardContainer">
           <Form>
-            <Col md={4}>
-              <Form.Group className="mb-2 mt-3 term">
-                <Form.Control
-                  className="frontInput"
-                  type="front"
-                  defaultValue="term"
-                ></Form.Control>
-              </Form.Group>
-            </Col>
-            <Col md={8}>
-              <Form.Group className="mb-2 description">
-                <Form.Control
-                  className="backInput"
-                  as="textarea"
-                  type="back"
-                  defaultValue="description"
-                ></Form.Control>
-              </Form.Group>
-            </Col>
+            {input.map((input, i) => (
+              <>
+                <Col md={4}>
+                  <Form.Group className="mb-2 mt-3 term">
+                    <Form.Control
+                      className="frontInput"
+                      type="front"
+                      name="front"
+                      value={input.front}
+                      key={i}
+                      onChange={(e) => handleFormChange(i, e)}
+                    ></Form.Control>
+                  </Form.Group>
+                </Col>
+                <Col md={8}>
+                  <Form.Group className="mb-2 description">
+                    <Form.Control
+                      className="backInput"
+                      as="textarea"
+                      type="back"
+                      name="back"
+                      value={input.back}
+                      onChange={(e) => handleFormChange(i, e)}
+                    ></Form.Control>
+                  </Form.Group>
+                </Col>
+              </>
+            ))}
           </Form>
         </Row>
         <Row className="buttonCont mb-3 mt-3">
