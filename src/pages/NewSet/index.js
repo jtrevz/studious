@@ -26,21 +26,20 @@ export default function NewSet() {
   return (
     <div>
       <Container fluid>
-        <Row>
+        <Row className="mb-2 mt-1">
           <Col className="setNameContainer">
-            <h1 className="setName">Latin Ch. 2</h1>
+            <h1 className="setName ">Latin Ch. 2</h1>
           </Col>
         </Row>
         <Row xs={1} className="cardContainer">
           <Form>
             {input.map((input, i) => (
               <>
-                {i > 0 ? <Col md={12} className="cardLine"></Col> : null}
+                {i > 0 ? <Col className="cardLine"></Col> : null}
                 <Col md={1} className="mt-2 d-flex justify-content-start">
                   <h1 className="cardNumber">{i + 1}</h1>
                 </Col>
-                {/* <Col md={12} className="numberLine"></Col> */}
-                <Col md={4} className="iField mt-2">
+                <Col className="iField mt-2">
                   <FloatingLabel controlId="floatingfront" label="Term">
                     <Form.Control
                       name="front"
@@ -51,7 +50,7 @@ export default function NewSet() {
                     ></Form.Control>
                   </FloatingLabel>
                 </Col>
-                <Col md={8} className="mb-1  iField">
+                <Col className="mb-1  iField">
                   <FloatingLabel label="Description" className="mb-2 ">
                     <Form.Control
                       placeholder="Description"
