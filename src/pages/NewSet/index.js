@@ -32,7 +32,7 @@ export default function NewSet() {
               </Form.Group>
             </Col>
             <Col md={8}>
-              <Form.Group className="mb-3 description">
+              <Form.Group className="mb-2 description">
                 <Form.Control
                   className="backInput"
                   as="textarea"
@@ -42,6 +42,20 @@ export default function NewSet() {
               </Form.Group>
             </Col>
           </Form>
+        </Row>
+        <Row className="buttonCont mb-3 mt-3">
+          <Col md={12} className="d-flex justify-content-center">
+            <Button
+              className="mb-3 mt-3 addCardButton"
+              style={{
+                backgroundColor: "#e85a4f",
+                borderColor: "#e85a4f",
+              }}
+              onClick={addCardInput}
+            >
+              Add Card
+            </Button>
+          </Col>
         </Row>
       </Container>
     </div>

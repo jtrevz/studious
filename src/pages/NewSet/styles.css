@@ -23,3 +23,12 @@
   justify-content: flex-start;
   /* align-items: center; */
 }
+
+/* .buttonCont {
+  background-color: white;
+  border-radius: 3px;
+} */
+
+.addCardButton {
+  color: #e85a4f;
+}
