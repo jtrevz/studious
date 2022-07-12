@@ -10,25 +10,26 @@
   align-items: center;
 }
 
-.term {
-  padding: 2%;
-  display: flex;
-  justify-content: flex-start;
-  /* align-items: center; */
+.iField {
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-bottom: 3%;
 }
 
-.description {
-  padding: 2%;
-  display: flex;
-  justify-content: flex-start;
-  /* align-items: center; */
+.cardNumber {
+  font-size: 1em;
+  padding-top: 2%;
+  padding-left: 2%;
+  color: gray;
 }
 
-/* .buttonCont {
-  background-color: white;
-  border-radius: 3px;
-} */
-
-.addCardButton {
-  color: #e85a4f;
+.numberLine {
+  border-top: 1px solid lightgray;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.cardLine {
+  border-top: 1px solid lightgray;
+  margin-left: 3%;
+  margin-right: 3%;
 }

@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { useNewCardContext } from "./../../utils/NewCardContext";
 import "./styles.css";
 
@@ -34,45 +35,58 @@ export default function NewSet() {
           <Form>
             {input.map((input, i) => (
               <>
-                <Col md={4}>
-                  <Form.Group className="mb-2 mt-3 term">
+                {i > 0 ? <Col md={12} className="cardLine"></Col> : null}
+                <Col md={1} className="mt-2 d-flex justify-content-start">
+                  <h1 className="cardNumber">{i + 1}</h1>
+                </Col>
+                {/* <Col md={12} className="numberLine"></Col> */}
+                <Col md={4} className="iField mt-2">
+                  <FloatingLabel controlId="floatingfront" label="Term">
                     <Form.Control
-                      className="frontInput"
-                      type="front"
                       name="front"
+                      placeholder="Term"
                       value={input.front}
                       key={i}
                       onChange={(e) => handleFormChange(i, e)}
                     ></Form.Control>
-                  </Form.Group>
+                  </FloatingLabel>
                 </Col>
-                <Col md={8}>
-                  <Form.Group className="mb-2 description">
+                <Col md={8} className="mb-1  iField">
+                  <FloatingLabel label="Description" className="mb-2 ">
                     <Form.Control
-                      className="backInput"
-                      as="textarea"
-                      type="back"
+                      placeholder="Description"
                       name="back"
                       value={input.back}
                       onChange={(e) => handleFormChange(i, e)}
                     ></Form.Control>
-                  </Form.Group>
+                  </FloatingLabel>
                 </Col>
               </>
             ))}
           </Form>
+          <Col md={12} className="d-flex justify-content-end">
+            <Button
+              className="mb-3 addCardButton"
+              style={{
+                backgroundColor: "#376e6f",
+                borderColor: "#376e6f",
+              }}
+              onClick={addCardInput}
+            >
+              + Add Card
+            </Button>
+          </Col>
         </Row>
-        <Row className="buttonCont mb-3 mt-3">
+        <Row>
           <Col md={12} className="d-flex justify-content-center">
             <Button
-              className="mb-3 mt-3 addCardButton"
+              className="mt-4 addCardButton"
               style={{
                 backgroundColor: "#e85a4f",
                 borderColor: "#e85a4f",
               }}
-              onClick={addCardInput}
             >
-              Add Card
+              Create Set
             </Button>
           </Col>
         </Row>
