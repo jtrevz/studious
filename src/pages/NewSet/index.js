@@ -6,11 +6,15 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { useNewCardContext } from "./../../utils/NewCardContext";
+import { db } from "../../firebase";
+import { collection, addDoc } from "firebase/firestore";
 import "./styles.css";
 
 export default function NewSet() {
   const { currentSet } = useNewCardContext();
-  const [input, setInput] = useState([{ front: "", back: "" }]);
+  const [input, setInput] = useState([
+    { front: "", back: "", set: currentSet },
+  ]);
 
   const handleFormChange = (i, e) => {
     let data = [...input];
@@ -19,8 +23,16 @@ export default function NewSet() {
   };
 
   const addCardInput = () => {
-    let newInput = { front: "", back: "" };
+    let newInput = { front: "", back: "", set: currentSet };
     setInput([...input, newInput]);
+  };
+
+  const cardCollectionRef = collection(db, "card");
+
+  const inputAll = async () => {
+    await input.forEach((card) => {
+      addDoc(cardCollectionRef, card);
+    });
   };
 
   return (
@@ -28,7 +40,7 @@ export default function NewSet() {
       <Container fluid>
         <Row className="mb-2 mt-1">
           <Col className="setNameContainer">
-            <h1 className="setName ">Latin Ch. 2</h1>
+            <h1 className="setName ">{currentSet}</h1>
           </Col>
         </Row>
         <Row xs={1} className="cardContainer">
@@ -84,6 +96,7 @@ export default function NewSet() {
                 backgroundColor: "#e85a4f",
                 borderColor: "#e85a4f",
               }}
+              onClick={inputAll}
             >
               Create Set
             </Button>
