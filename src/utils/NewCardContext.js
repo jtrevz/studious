@@ -6,7 +6,7 @@ export const useNewCardContext = () => useContext(NewCardContext);
 export function NewCardProvider({ children }) {
   const [front, setFront] = useState("");
   const [back, setBack] = useState("");
-  const [currentSet, setCurrentSet] = useState("");
+  const [currentSet, setCurrentSet] = useState({ id: "", name: "" });
 
   const addNewCard = (card) => {};
 
@@ -14,8 +14,8 @@ export function NewCardProvider({ children }) {
     setBack(input);
   };
 
-  const estNewSet = (input) => {
-    setCurrentSet(input);
+  const estNewSet = (inputid, inputname) => {
+    setCurrentSet({ id: inputid, name: inputname });
   };
 
   return (

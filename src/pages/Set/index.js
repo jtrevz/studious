@@ -21,7 +21,9 @@ export default function Set() {
 
   const cardCollectionRef = collection(db, "sets");
   const createNewSet = async () => {
-    await addDoc(cardCollectionRef, { name: newSet });
+    await addDoc(cardCollectionRef, { name: newSet }).then((set) =>
+      estNewSet(set.id, newSet)
+    );
   };
 
   const navigate = useNavigate();
@@ -82,7 +84,6 @@ export default function Set() {
                 onClick={() => {
                   createNewSet();
                   handleClose();
-                  estNewSet(newSet);
                   navigateNewSet();
                 }}
               >
