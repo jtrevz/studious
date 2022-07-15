@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
+import { useNavigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -37,6 +38,10 @@ export default function NewSet() {
     });
   };
 
+  const navigate = useNavigate();
+  const navigateNewSet = () => {
+    navigate("/set");
+  };
 
   return (
     <div>
@@ -103,7 +108,10 @@ export default function NewSet() {
                     backgroundColor: "#e85a4f",
                     borderColor: "#e85a4f",
                   }}
-                  onClick={inputAll}
+                  onClick={() => {
+                    inputAll;
+                    navigateNewSet();
+                  }}
                 >
                   Create Set
                 </Button>
