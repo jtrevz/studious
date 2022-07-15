@@ -109,7 +109,7 @@ export default function NewSet() {
                     borderColor: "#e85a4f",
                   }}
                   onClick={() => {
-                    inputAll;
+                    inputAll();
                     navigateNewSet();
                   }}
                 >
