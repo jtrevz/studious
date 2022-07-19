@@ -15,11 +15,11 @@ export default function Login() {
         </div>
         <Form className="form col-lg-6 col-md-8 col-sm-10 col-xs-11">
           <FloatingLabel
-            controlId="floatingemail"
-            label="Email address"
+            controlId="floatingusername"
+            label="Username"
             className="mb-3"
           >
-            <Form.Control type="email" placeholder="name@example.com" />
+            <Form.Control type="username" placeholder="jsmith" />
           </FloatingLabel>
           <FloatingLabel
             controlId="floatingpassword"
