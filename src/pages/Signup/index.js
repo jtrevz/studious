@@ -30,6 +30,11 @@ export default function Signup() {
               </FloatingLabel>
             </Col>
           </Row>
+          
+              <FloatingLabel label="Username" className="mb-3">
+                <Form.Control type="username" placeholder="jsmith" />
+              </FloatingLabel>
+          
           <FloatingLabel label="Email Address" className="mb-3">
             <Form.Control type="email" placeholder="name@example.com" />
           </FloatingLabel>
