@@ -10,11 +10,14 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Stack from "react-bootstrap/Stack";
-import { updateDoc, doc, deleteDoc } from "firebase/firestore";
+import { useNewCardContext } from "./../../utils/NewCardContext";
+import { updateDoc, doc, deleteDoc, where, query } from "firebase/firestore";
 import "./styles.css";
 
 export default function Sets() {
+  const [set, setSet] = useState({});
   const [cards, setCards] = useState([]);
+  const { currentSet } = useNewCardContext();
   const cardCollectionRef = collection(db, "card");
 
   const [updateFront, setUpdateFront] = useState("");
@@ -26,7 +29,8 @@ export default function Sets() {
   const handleShow = () => setShow(true);
 
   const getCards = async () => {
-    const data = await getDocs(cardCollectionRef);
+    const q = query(collection(db, "card"), where("set", "==", currentSet.id));
+    const data = await getDocs(q);
     await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
@@ -46,6 +50,8 @@ export default function Sets() {
   };
 
   useEffect(() => {
+    setSet(currentSet);
+    console.log(currentSet);
     getCards();
   }, []);
   return (
@@ -53,7 +59,7 @@ export default function Sets() {
       <Container fluid>
         <Row>
           <Col className="setContainer">
-            <h1 className="setName">Latin Ch. 1</h1>
+            <h1 className="setName">{currentSet.name}</h1>
           </Col>
           <Col>
             <div className="setEdit">
@@ -66,7 +72,11 @@ export default function Sets() {
           <Col>
             {cards.length > 0 ? (
               cards.map((card) => (
-                <Stack direction="horizontal" className="flashcard">
+                <Stack
+                  direction="horizontal"
+                  className="flashcard"
+                  key={card.id}
+                >
                   <div className="term col-4">{card.front}</div>
                   <div className="line"></div>
                   <div className="description col-7">{card.back}</div>

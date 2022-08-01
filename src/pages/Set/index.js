@@ -72,7 +72,14 @@ export default function Set() {
                 className="cardColumn"
                 key={set.key}
               >
-                <Card className="setCard" onClick={() => navigateSet()}>
+                <Card
+                
+                  className="setCard"
+                  onClick={() => {
+                    estNewSet(set.key, set.name);
+                    navigateSet();
+                  }}
+                >
                   <Card.Title className="setName">{set.name}</Card.Title>
                   {/* <Card.Subtitle className="cardAmount text-muted">
                     {set.size} cards
