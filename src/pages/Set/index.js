@@ -1,25 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { Row, Col } from "react-bootstrap";
 import { db } from "../../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc } from "firebase/firestore";
 import "./styles.css";
 import { useNewCardContext } from "./../../utils/NewCardContext";
 
 export default function Set() {
-  const [sets, setSets] = useState(sampleSets);
-  const [newSet, setNewSet] = useState("");
+  const [sets, setSets] = useState([]);
+  const [newSet, setNewSet] = useState([]);
 
   const { estNewSet } = useNewCardContext();
 
   const cardCollectionRef = collection(db, "sets");
+
   const createNewSet = async () => {
     await addDoc(cardCollectionRef, { name: newSet }).then((set) =>
       estNewSet(set.id, newSet)
@@ -35,6 +37,15 @@ export default function Set() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const getSets = async () => {
+    const data = await getDocs(cardCollectionRef);
+    await setSets(data.docs.map((doc) => ({ ...doc.data(), key: doc.id })));
+  };
+
+  useEffect(() => {
+    getSets();
+  }, []);
+
   return (
     <div>
       <Container fluid>
@@ -47,16 +58,28 @@ export default function Set() {
           </Col>
         </Row>
         <Row>
-          {sets.map((set) => (
-            <Col s={12} md={6} lg={4} xl={4} xxl={3} className="cardColumn">
-              <Card className="setCard" key={set.name}>
-                <Card.Title className="setName">{set.name}</Card.Title>
-                <Card.Subtitle className="cardAmount text-muted">
-                  {set.amount} cards
-                </Card.Subtitle>
-              </Card>
-            </Col>
-          ))}
+          {sets.length > 0 ? (
+            sets.map((set) => (
+              <Col
+                s={12}
+                md={6}
+                lg={4}
+                xl={4}
+                xxl={3}
+                className="cardColumn"
+                key={set.key}
+              >
+                <Card className="setCard">
+                  <Card.Title className="setName">{set.name}</Card.Title>
+                  {/* <Card.Subtitle className="cardAmount text-muted">
+                    {set.size} cards
+                  </Card.Subtitle> */}
+                </Card>
+              </Col>
+            ))
+          ) : (
+            <Spinner animation="border" />
+          )}
         </Row>
       </Container>
       <Modal show={show} onHide={handleClose}>
@@ -96,18 +119,3 @@ export default function Set() {
     </div>
   );
 }
-
-const sampleSets = [
-  {
-    name: "Ch. 14 Federal and State",
-    amount: 17,
-  },
-  {
-    name: "Ch. 15 Contemporary Real Estate",
-    amount: 12,
-  },
-  {
-    name: "Ch. 13 VA Loans",
-    amount: 19,
-  },
-];
