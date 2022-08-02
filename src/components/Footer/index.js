@@ -17,9 +17,19 @@ export default function Footer() {
               md={6}
               className="py-3 d-flex justify-content-start align-items-center"
             >
-              <MdAlternateEmail className="Icon" />
-              <FaGithub className="Icon" />
-              <FaLinkedinIn className="Icon" />
+              <a className="Icon" href="https://jtrevz.github.io/portfolio/">
+                <MdAlternateEmail className="Icon" className="Icon" />
+              </a>
+
+              <a className="Icon" href="https://github.com/jtrevz">
+                <FaGithub className="Icon" />
+              </a>
+              <a
+                className="Icon"
+                href="https://www.linkedin.com/in/jennifertrevizo/"
+              >
+                <FaLinkedinIn className="Icon" />
+              </a>
             </Col>
             <Col
               md={6}
@@ -33,11 +43,16 @@ export default function Footer() {
                   <span>Houston, TX</span>
                 </div>
                 <div className="contactIc d-flex flex-direction-row">
-                  <MdEmail className="ic" />
-                  <span>jenny.trevizo2013@gmail.com</span>
+                  <a id="mail" href="mailto:jenny.trevizo2013@gmail.com">
+                    <MdEmail className="ic" />
+                    <span id="mail">jenny.trevizo2013@gmail.com</span>
+                  </a>
                 </div>
                 <div className="contactIc d-flex flex-direction-row">
-                  <BsTelephoneFill className="ic" /> <span>(713) 382-5761</span>
+                  <a id="phone" href="tel:+17133825761">
+                    <BsTelephoneFill className="ic" />{" "}
+                    <span>(713) 382-5761</span>
+                  </a>
                 </div>
               </div>
             </Col>

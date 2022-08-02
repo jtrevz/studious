@@ -41,6 +41,24 @@
   padding: 1.5%;
 }
 
+#mail {
+  color: white;
+  text-decoration: none;
+}
+
+#mail:hover {
+  text-decoration: underline;
+}
+
+#phone {
+  color: white;
+  text-decoration: none;
+}
+
+#phone:hover {
+  text-decoration: underline;
+}
+
 .name {
   color: white;
   font-size: 0.6rem;
