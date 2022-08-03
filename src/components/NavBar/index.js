@@ -11,7 +11,7 @@ import { BsHourglassSplit } from "react-icons/bs";
 export default function NavBar() {
   return (
     <Navbar bg="myCustom" variant="dark" sticky="top" expand="md">
-      <Navbar.Brand>
+      <Navbar.Brand className="brandPointer" href="/">
         <BsHourglassSplit className="logo" /> studious
       </Navbar.Brand>
       <Navbar.Toggle />
