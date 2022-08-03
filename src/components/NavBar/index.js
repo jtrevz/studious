@@ -17,8 +17,7 @@ export default function NavBar() {
       <Navbar.Toggle />
       <Navbar.Collapse>
         <Nav>
-          <Nav.Link href="/collections">Collections</Nav.Link>
-          <Nav.Link href="/sets">Sets</Nav.Link>
+          <Nav.Link href="/">Sets</Nav.Link>
         </Nav>
         <Nav className="user">
           {/* <div className="pic">

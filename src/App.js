@@ -21,11 +21,11 @@ function App() {
         <Router>
           <NewCardProvider>
             <Routes>
-              <Route exact path="/" element={<Flashcards />} />
+              <Route exact path="/" element={<Set />} />
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/signup" element={<Signup />} />
               <Route exact path="sets" element={<Sets />} />
-              <Route exact path="set" element={<Set />} />
+              <Route exact path="collection" element={<Set />} />
               <Route path="/newset" element={<NewSet />} />
             </Routes>
           </NewCardProvider>
