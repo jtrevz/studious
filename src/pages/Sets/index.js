@@ -63,8 +63,12 @@ export default function Sets() {
           </Col>
           <Col>
             <div className="setEdit">
-              <BsFillLightningFill className="edit" />
-              <BsPencil className="edit" />
+              <button className="btnStyling">
+                <BsFillLightningFill className="edit" />
+              </button>
+              <button className="btnStyling">
+                <BsPencil className="edit" />
+              </button>
             </div>
           </Col>
         </Row>
@@ -82,22 +86,26 @@ export default function Sets() {
                   <div className="description col-7">{card.back}</div>
                   <div className="col-1 cardBtn1">
                     <div className="cardBtn2">
-                      <BsTrash
-                        onClick={() => {
-                          deleteCard(card.id);
-                          getCards();
-                        }}
-                      />
+                      <button className="btnStyling">
+                        <BsTrash
+                          onClick={() => {
+                            deleteCard(card.id);
+                            getCards();
+                          }}
+                        />
+                      </button>
                     </div>
                     <div className="cardBtn2">
-                      <BsPencil
-                        onClick={() => {
-                          setUpdateFront(card.front);
-                          setUpdateBack(card.back);
-                          setUpdateID(card.id);
-                          handleShow();
-                        }}
-                      />
+                      <button className="btnStyling">
+                        <BsPencil
+                          onClick={() => {
+                            setUpdateFront(card.front);
+                            setUpdateBack(card.back);
+                            setUpdateID(card.id);
+                            handleShow();
+                          }}
+                        />
+                      </button>
                     </div>
                   </div>
                 </Stack>

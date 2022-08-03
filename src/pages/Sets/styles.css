@@ -31,6 +31,12 @@
   margin: 3.8%;
 }
 
+.btnStyling {
+  border: none;
+  background: none;
+  color: #e85a4f;
+}
+
 .flashcard {
   background-color: white;
   margin: 2%;
