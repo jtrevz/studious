@@ -24,9 +24,29 @@ export default function Sets() {
   const [updateBack, setUpdateBack] = useState("");
   const [updateID, setUpdateID] = useState();
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // Modals
+
+  const [showEditCard, setShowEditCard] = useState(false);
+  const [showEditSet, setShowEditSet] = useState(false);
+  const [showDeleteSet, setShowDeleteSet] = useState(false);
+
+  const handleClose = () => {
+    setShowEditCard(false);
+    setShowEditSet(false);
+    setShowDeleteSet(false);
+  };
+
+  const handleShow = (type) => {
+    if (type === "editCard") {
+      setShowEditCard(true);
+    } else if (type === "editName") {
+      setShowEditSet(true);
+    } else if (type === "deleteSet") {
+      setShowDeleteSet(true);
+    }
+  };
+
+  //CARDS Read, Update, Delete
 
   const getCards = async () => {
     const q = query(collection(db, "card"), where("set", "==", currentSet.id));
@@ -67,7 +87,16 @@ export default function Sets() {
                 <BsFillLightningFill className="edit" />
               </button>
               <button className="btnStyling">
-                <BsPencil className="edit" />
+                <BsPencil
+                  className="edit"
+                  onClick={() => handleShow("editName")}
+                />
+              </button>
+              <button className="btnStyling">
+                <BsTrash
+                  className="edit"
+                  onClick={() => handleShow("deleteSet")}
+                />
               </button>
             </div>
           </Col>
@@ -102,7 +131,7 @@ export default function Sets() {
                             setUpdateFront(card.front);
                             setUpdateBack(card.back);
                             setUpdateID(card.id);
-                            handleShow();
+                            handleShow("editCard");
                           }}
                         />
                       </button>
@@ -116,7 +145,7 @@ export default function Sets() {
           </Col>
         </Row>
       </Container>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={showEditCard} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title className="jFont">Edit Card</Modal.Title>
         </Modal.Header>
@@ -152,6 +181,18 @@ export default function Sets() {
             </Modal.Footer>
           </Form>
         </Modal.Body>
+      </Modal>
+      <Modal show={showEditSet} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title className="jFont">Edit Set Name</Modal.Title>
+        </Modal.Header>
+        <Modal.Body></Modal.Body>
+      </Modal>
+      <Modal show={showDeleteSet} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title className="jFont">Deletion Confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body></Modal.Body>
       </Modal>
     </div>
   );
