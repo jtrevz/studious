@@ -170,6 +170,7 @@ export default function Sets() {
             </Form.Group>
             <Modal.Footer>
               <Button
+              style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
                 onClick={() => {
                   updateCard(updateID);
                   handleClose();
@@ -186,7 +187,21 @@ export default function Sets() {
         <Modal.Header closeButton>
           <Modal.Title className="jFont">Edit Set Name</Modal.Title>
         </Modal.Header>
-        <Modal.Body></Modal.Body>
+
+        <Form>
+          <Modal.Body>
+            <Form.Group className="editSet">
+              <Form.Control defaultValue={currentSet.name}></Form.Control>
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer className="mb-0">
+            <Button
+              style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
+            >
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Form>
       </Modal>
       <Modal show={showDeleteSet} onHide={handleClose}>
         <Modal.Header closeButton>
