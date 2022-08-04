@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { BsFillLightningFill, BsPencil, BsTrash } from "react-icons/bs";
+import { TiWarning, TiWarningOutline } from "react-icons/ti";
 import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -170,7 +171,7 @@ export default function Sets() {
             </Form.Group>
             <Modal.Footer>
               <Button
-              style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
+                style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
                 onClick={() => {
                   updateCard(updateID);
                   handleClose();
@@ -187,7 +188,6 @@ export default function Sets() {
         <Modal.Header closeButton>
           <Modal.Title className="jFont">Edit Set Name</Modal.Title>
         </Modal.Header>
-
         <Form>
           <Modal.Body>
             <Form.Group className="editSet">
@@ -207,7 +207,27 @@ export default function Sets() {
         <Modal.Header closeButton>
           <Modal.Title className="jFont">Deletion Confirmation</Modal.Title>
         </Modal.Header>
-        <Modal.Body></Modal.Body>
+        <Modal.Body className="d-flex flex-row">
+          <div className="d-flex align-items-center">
+            <TiWarningOutline className="warning" />
+          </div>
+          <div className="deletionQ">
+            Are you sure you want to permanently remove this set along with all
+            cards? This action cannot be undone.
+          </div>
+        </Modal.Body>
+        <Modal.Footer className="mb-0">
+          <Button
+            style={{ backgroundColor: "#376e6f", borderColor: "#376e6f" }}
+          >
+            Cancel
+          </Button>
+          <Button
+            style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
+          >
+            Confirm
+          </Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );

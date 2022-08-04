@@ -83,6 +83,17 @@
   color: #e85a4f;
 }
 
+.warning {
+  color: #e85a4f;
+  height: auto;
+  width: 45px;
+  padding: 5%;
+}
+
+.deletionQ {
+  padding: 2%;
+}
+
 @media screen and (max-width: 576px) {
   .term {
     font-size: 1em;
@@ -90,6 +101,7 @@
   .description {
     font-size: 0.8em;
   }
+
   .cardBtn1 {
     margin-left: -0.1em;
   }
