@@ -1,6 +1,6 @@
 import React from "react";
-import "styles.css";
+import "./styles.css";
 
 export default function Account() {
-  return <div></div>;
+  return <div>Account</div>;
 }

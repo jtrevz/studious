@@ -24,7 +24,7 @@ export default function NavBar() {
               <BsPerson classname="userPFP" />
             </div> */}
           <NavDropdown title="jtrevz" align="end">
-            <NavDropdown.Item>Account</NavDropdown.Item>
+            <NavDropdown.Item href="/account">Account</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item>Sign out</NavDropdown.Item>
           </NavDropdown>

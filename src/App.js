@@ -10,6 +10,7 @@ import NewSet from "./pages/NewSet";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import Account from "./pages/Account";
 
 import { NewCardProvider } from "./utils/NewCardContext";
 
@@ -27,6 +28,7 @@ function App() {
               <Route exact path="sets" element={<Sets />} />
               <Route exact path="collection" element={<Set />} />
               <Route path="/newset" element={<NewSet />} />
+              <Route exact path="/account" element={<Account />} />
             </Routes>
           </NewCardProvider>
         </Router>
