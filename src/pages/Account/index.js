@@ -7,8 +7,13 @@ import "./styles.css";
 
 export default function Account() {
   return (
-    <div className="d-flex justify-content-center">
-      <Container className="accountCont mt-4">
+    <div className="">
+      <Container fluid>
+        <Row className="d-flex justify-content-start">
+          <div>Account Settings</div>
+        </Row>
+      </Container>
+      <Container className="accountCont mt-2">
         <Row className="infoRow">
           <Col
             className="d-flex justify-content-center userPic userCard"
@@ -16,13 +21,31 @@ export default function Account() {
           >
             <div className="imageCont d-flex justify-content-center">
               <img id="userPicture" src={stickFigure}></img>
-              <div className="userND">@<span >jtrevz</span></div>
+              <div className="userND">
+                @<span>jtrevz</span>
+              </div>
             </div>
           </Col>
           <Col sm={7} className="userInfo userCard">
-            <Row>name</Row>
-            <Row>username</Row>
-            <Row>password</Row>
+            <Row className="inputCards inTop">
+              <div>
+                <h3 className="inputTitles">Name</h3>
+                <p className="inputText">Jennifer Trevizo</p>
+              </div>
+              <div></div>
+            </Row>
+            <Row className="inputCards">
+              <div>
+                <h3 className="inputTitles">Username</h3>
+                <p className="inputText">jtrevz</p>
+              </div>
+            </Row>
+            <Row className="inputCards inBottom">
+              <div>
+                <h3 className="inputTitles">Password </h3>
+                <p className="inputText">*******</p>
+              </div>
+            </Row>
           </Col>
         </Row>
       </Container>
