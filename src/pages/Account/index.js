@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import stickFigure from "../../utils/pics/rihannastickfigure.jpeg";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import "./styles.css";
 
 export default function Account() {
@@ -32,7 +33,9 @@ export default function Account() {
                 <h3 className="inputTitles">Name</h3>
                 <p className="inputText">Jennifer Trevizo</p>
               </div>
-              <div></div>
+              <div>
+                <MdKeyboardArrowRight />
+              </div>
             </Row>
             <Row className="inputCards">
               <div>
