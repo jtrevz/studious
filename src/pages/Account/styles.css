@@ -1,0 +1,42 @@
+.accountCont {
+  /* background-color: white;
+  border-radius: 5px; */
+  padding: 2%;
+}
+
+.infoRow {
+  width: 100%;
+}
+
+.userCard {
+  background-color: white;
+  border-radius: 5px;
+  margin: 1%;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+.imageCont {
+  margin: 10%;
+  flex-direction: column;
+}
+
+.userND {
+  display: block;
+  text-align: center;
+  padding: 15%;
+}
+
+#userPicture {
+  display: block;
+  border-radius: 50%;
+  height: 15vh;
+  width: auto;
+  border: 1px solid lightgrey;
+  padding: 5%;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+.userInfo {
+  padding: 5%;
+}
