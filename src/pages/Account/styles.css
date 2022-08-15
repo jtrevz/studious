@@ -19,7 +19,7 @@
 }
 
 .imageCont {
-  margin: 10%;
+  margin: 5%;
   flex-direction: column;
 }
 
@@ -27,13 +27,14 @@
   display: block;
   text-align: center;
   margin-top: 5%;
-  padding: 15%;
+  padding: 5%;
+  color: var(--bs-gray-dark);
 }
 
 #userPicture {
   display: block;
   border-radius: 50%;
-  height: 15vh;
+  height: 30vh;
   width: auto;
   border: 1px solid lightgrey;
   padding: 5%;
@@ -62,4 +63,35 @@
 
 .inputText {
   margin: 0;
+}
+
+.accountInfoText {
+  padding-right: unset;
+  flex: 2;
+  font-family: "Nunito", sans-serif;
+}
+
+.accountLink {
+  flex: 1;
+  padding-left: unset;
+  padding-right: unset;
+  display: flex !important;
+  justify-content: end;
+  align-items: center;
+  color: #e85a4f;
+}
+
+@media screen and (min-width: 576px) {
+  .imageCont {
+    margin: 8%;
+    flex-direction: column;
+  }
+
+  #userPicture {
+    height: 20vh;
+  }
+
+  .userND {
+    padding: 15%;
+  }
 }

@@ -23,31 +23,37 @@ export default function Account() {
             <div className="imageCont d-flex justify-content-center">
               <img id="userPicture" src={stickFigure}></img>
               <div className="userND">
-                @<span>jtrevz</span>
+                @<span className="bigUserName"> jtrevz</span>
               </div>
             </div>
           </Col>
           <Col sm={7} className="userInfo userCard">
             <Row className="inputCards inTop">
-              <div>
+              <Col className="accountInfoText col flex-grow-4">
                 <h3 className="inputTitles">Name</h3>
                 <p className="inputText">Jennifer Trevizo</p>
-              </div>
-              <div>
+              </Col>
+              <Col className="accountLink col ml-auto">
                 <MdKeyboardArrowRight />
-              </div>
+              </Col>
             </Row>
             <Row className="inputCards">
-              <div>
+              <Col className="accountInfoText col flex-grow-4">
                 <h3 className="inputTitles">Username</h3>
                 <p className="inputText">jtrevz</p>
-              </div>
+              </Col>
+              <Col className="accountLink col ml-auto">
+                <MdKeyboardArrowRight />
+              </Col>
             </Row>
             <Row className="inputCards inBottom">
-              <div>
+              <Col className="accountInfoText col flex-grow-4">
                 <h3 className="inputTitles">Password </h3>
                 <p className="inputText">*******</p>
-              </div>
+              </Col>
+              <Col className="accountLink col ml-auto">
+                <MdKeyboardArrowRight />
+              </Col>
             </Row>
           </Col>
         </Row>
