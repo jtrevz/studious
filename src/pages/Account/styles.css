@@ -4,18 +4,26 @@
   /* background-color: white;
   border-radius: 5px; */
   padding: 2%;
+  margin-top: 0;
+}
+
+.accountPTitle {
+  font-family: "Nunito", sans-serif;
+  color: #e85a4f;
+  font-size: 150%;
 }
 
 .infoRow {
   width: 100%;
+  height: auto;
 }
 
 .userCard {
   background-color: white;
-  border-radius: 5px;
   margin: 1%;
   border-radius: 0.25rem;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+  padding: none !important;
 }
 
 .imageCont {
@@ -34,7 +42,7 @@
 #userPicture {
   display: block;
   border-radius: 50%;
-  height: 30vh;
+  height: 35vh;
   width: auto;
   border: 1px solid lightgrey;
   padding: 5%;
@@ -43,7 +51,7 @@
 
 .inputCards {
   border: 1px solid lightgrey;
-  padding: 5%;
+  padding: 7%;
 }
 
 .inTop {
@@ -83,15 +91,15 @@
 
 @media screen and (min-width: 576px) {
   .imageCont {
-    margin: 8%;
+    margin: 6%;
     flex-direction: column;
   }
 
   #userPicture {
-    height: 20vh;
+    height: 25vh;
   }
 
   .userND {
-    padding: 15%;
+    padding: 10%;
   }
 }

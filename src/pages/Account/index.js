@@ -11,7 +11,7 @@ export default function Account() {
     <div className="">
       <Container fluid>
         <Row className="d-flex justify-content-start">
-          <div>Account Settings</div>
+          <div className="accountPTitle">Account Settings</div>
         </Row>
       </Container>
       <Container className="accountCont mt-2">
@@ -23,7 +23,7 @@ export default function Account() {
             <div className="imageCont d-flex justify-content-center">
               <img id="userPicture" src={stickFigure}></img>
               <div className="userND">
-                @<span className="bigUserName"> jtrevz</span>
+                @<span className="bigUserName">jtrevz</span>
               </div>
             </div>
           </Col>
