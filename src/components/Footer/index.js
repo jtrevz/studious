@@ -15,7 +15,7 @@ export default function Footer() {
           <Row className="foot">
             <Col
               md={6}
-              className="py-3 d-flex justify-content-start align-items-center"
+              className="pt-3 d-flex justify-content-center align-items-center cLinksFooter"
             >
               <a className="Icon" href="https://jtrevz.github.io/portfolio/">
                 <MdAlternateEmail className="Icon" className="Icon" />
