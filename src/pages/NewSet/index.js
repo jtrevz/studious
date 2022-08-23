@@ -27,6 +27,8 @@ export default function NewSet() {
     setInput(data);
   };
 
+  const { estNewSet } = useNewCardContext();
+
   const addCardInput = () => {
     let newInput = { front: "", back: "", set: currentSet.id };
     setInput([...input, newInput]);
@@ -40,7 +42,7 @@ export default function NewSet() {
 
   const navigate = useNavigate();
   const navigateNewSet = () => {
-    navigate("/set");
+    navigate("/sets");
   };
 
   return (
@@ -111,6 +113,7 @@ export default function NewSet() {
                   onClick={() => {
                     inputAll();
                     navigateNewSet();
+                    estNewSet(currentSet.id, currentSet.name)
                   }}
                 >
                   Create Set
