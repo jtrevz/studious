@@ -7,6 +7,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { Row, Col } from "react-bootstrap";
 import { db } from "../../firebase";
@@ -27,6 +29,12 @@ export default function Set() {
       estNewSet(set.id, newSet)
     );
   };
+
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Create Set
+    </Tooltip>
+  );
 
   const navigate = useNavigate();
   const navigateNewSet = () => {
@@ -57,7 +65,15 @@ export default function Set() {
             <h1 className="pageTitle">Your Sets</h1>
           </Col>
           <Col className="addButtonContainer">
-            <BsPlusCircleFill className="addButton" onClick={handleShow} />
+            <OverlayTrigger
+              delay={{ hide: 450, show: 300 }}
+              overlay={renderTooltip}
+              placement="left"
+            >
+              <Button className="addButtonCont">
+                <BsPlusCircleFill className="addButton" onClick={handleShow} />
+              </Button>
+            </OverlayTrigger>
           </Col>
         </Row>
         <Row>
@@ -73,7 +89,6 @@ export default function Set() {
                 key={set.key}
               >
                 <Card
-                
                   className="setCard"
                   onClick={() => {
                     estNewSet(set.key, set.name);

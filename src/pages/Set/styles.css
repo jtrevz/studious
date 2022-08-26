@@ -18,6 +18,19 @@
   margin: 1%;
 }
 
+.addButtonCont {
+  background-color: inherit !important;
+  border: none !important;
+  padding: 1% !important;
+}
+
+.addButtonCont:focus,
+.addButtonCont:active,
+.addButtonCont:hover {
+  /* border: none !important; */
+  box-shadow: none;
+}
+
 .cardColumn {
   display: flex;
   justify-content: center;
