@@ -27,8 +27,7 @@
 .addButtonCont:focus,
 .addButtonCont:active,
 .addButtonCont:hover {
-  /* border: none !important; */
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 .cardColumn {
