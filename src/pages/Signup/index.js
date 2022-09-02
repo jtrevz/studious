@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { Row, Col, Form, Button, FloatingLabel } from "react-bootstrap";
+import React, { useRef, useState } from "react";
+import { Row, Col, Form, Button, FloatingLabel, Alert } from "react-bootstrap";
 import { useAuthContext } from "../../utils/AuthContext";
 import { BsHourglassSplit } from "react-icons/bs";
 import "./styles.css";
@@ -8,12 +8,27 @@ export default function Signup() {
   const userNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const { register } = useAuthContext();
+  const { register, currentUser } = useAuthContext();
 
   function handleSubmit(e) {
     e.preventDefault();
-    register(emailRef.current.value, passwordRef.current.value);
+
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      return setError("Passwords do not match");
+    }
+
+    try {
+      setError("");
+      setLoading(true);
+      register(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError("Failed to create an account");
+    }
+    setLoading(false);
   }
 
   return (
@@ -23,9 +38,12 @@ export default function Signup() {
           <h1>studious</h1>
           <BsHourglassSplit size={80} color="white" />
         </div>
-        <Form className="form col-lg-6 col-md-8 col-sm-10 col-xs-11">
+        <Form
+          className="form col-lg-6 col-md-8 col-sm-10 col-xs-11"
+          onSubmit={handleSubmit}
+        >
           <h3 className="bigBanner">Welcome to studious!</h3>
-
+          {error && <Alert variant="danger">{error}</Alert>}
           <FloatingLabel label="Username" className="mb-3">
             <Form.Control
               type="username"
@@ -51,10 +69,19 @@ export default function Signup() {
               required
             />
           </FloatingLabel>
+          <FloatingLabel label="Confirm Password" className="mb-3">
+            <Form.Control
+              type="password"
+              placeholder="pass123"
+              ref={confirmPasswordRef}
+              required
+            />
+          </FloatingLabel>
           <h5 className="smallBanner">
             Already have an account? <a href="./login">Login here</a>
           </h5>
           <Button
+            disabled={loading}
             style={{
               backgroundColor: "#e85a4f",
               borderColor: "#e85a4f",
@@ -66,6 +93,7 @@ export default function Signup() {
           </Button>
         </Form>
       </div>
+      {JSON.stringify(currentUser && currentUser.email)}
     </div>
   );
 }
