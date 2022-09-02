@@ -3,6 +3,7 @@ import React, { createContext, useState, useContext } from "react";
 const NewCardContext = createContext();
 
 export const useNewCardContext = () => useContext(NewCardContext);
+
 export function NewCardProvider({ children }) {
   const [front, setFront] = useState("");
   const [back, setBack] = useState("");

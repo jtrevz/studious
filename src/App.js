@@ -13,26 +13,30 @@ import Footer from "./components/Footer";
 import Account from "./pages/Account";
 
 import { NewCardProvider } from "./utils/NewCardContext";
+import { AuthContextProvider } from "./utils/AuthContext";
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <div className="content">
-        <Router>
-          <NewCardProvider>
-            <Routes>
-              <Route exact path="/" element={<Set />} />
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/signup" element={<Signup />} />
-              <Route exact path="sets" element={<Sets />} />
-              <Route exact path="collection" element={<Set />} />
-              <Route path="/newset" element={<NewSet />} />
-              <Route exact path="/account" element={<Account />} />
-            </Routes>
-          </NewCardProvider>
-        </Router>
-      </div>
+      <AuthContextProvider>
+        <NavBar />
+        <div className="content">
+          <Router>
+            <NewCardProvider>
+              <Routes>
+                <Route exact path="/" element={<Set />} />
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/signup" element={<Signup />} />
+                <Route exact path="sets" element={<Sets />} />
+                <Route exact path="collection" element={<Set />} />
+                <Route path="/newset" element={<NewSet />} />
+                <Route exact path="/account" element={<Account />} />
+              </Routes>
+            </NewCardProvider>
+          </Router>
+        </div>
+      </AuthContextProvider>
+
       <Footer />
     </div>
   );
