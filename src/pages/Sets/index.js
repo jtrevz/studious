@@ -67,6 +67,8 @@ export default function Sets() {
     await updateDoc(cardDoc, updates);
   };
 
+  //set tooltips
+
   const renderStudyTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       Study Set
@@ -82,6 +84,18 @@ export default function Sets() {
   const renderDeleteTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       Delete Set
+    </Tooltip>
+  );
+
+  //card tooltips
+  const renderEditCardTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Edit Card
+    </Tooltip>
+  );
+  const renderDeleteCardTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Delete Card
     </Tooltip>
   );
 
@@ -154,26 +168,38 @@ export default function Sets() {
                   <div className="description col-7">{card.back}</div>
                   <div className="col-1 cardBtn1">
                     <div className="cardBtn2">
-                      <button className="btnStyling">
-                        <BsTrash
-                          onClick={() => {
-                            deleteCard(card.id);
-                            getCards();
-                          }}
-                        />
-                      </button>
+                      <OverlayTrigger
+                        delay={{ hide: 450, show: 300 }}
+                        overlay={renderDeleteCardTooltip}
+                        placement="right"
+                      >
+                        <button className="btnStyling">
+                          <BsTrash
+                            onClick={() => {
+                              deleteCard(card.id);
+                              getCards();
+                            }}
+                          />
+                        </button>
+                      </OverlayTrigger>
                     </div>
                     <div className="cardBtn2">
-                      <button className="btnStyling">
-                        <BsPencil
-                          onClick={() => {
-                            setUpdateFront(card.front);
-                            setUpdateBack(card.back);
-                            setUpdateID(card.id);
-                            handleShow("editCard");
-                          }}
-                        />
-                      </button>
+                      <OverlayTrigger
+                        delay={{ hide: 450, show: 300 }}
+                        overlay={renderEditCardTooltip}
+                        placement="right"
+                      >
+                        <button className="btnStyling">
+                          <BsPencil
+                            onClick={() => {
+                              setUpdateFront(card.front);
+                              setUpdateBack(card.back);
+                              setUpdateID(card.id);
+                              handleShow("editCard");
+                            }}
+                          />
+                        </button>
+                      </OverlayTrigger>
                     </div>
                   </div>
                 </Stack>
