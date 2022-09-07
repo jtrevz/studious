@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { BsFillLightningFill, BsPencil, BsTrash } from "react-icons/bs";
-import { TiWarning, TiWarningOutline } from "react-icons/ti";
+import { TiWarningOutline } from "react-icons/ti";
 import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";

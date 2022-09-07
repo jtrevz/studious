@@ -91,7 +91,7 @@
 @media screen and (min-width: 767px) {
   .cLinksFooter {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
   }
 }
 

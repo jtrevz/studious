@@ -18,7 +18,7 @@ export default function Footer() {
               className="pt-3 d-flex justify-content-center align-items-center cLinksFooter"
             >
               <a className="Icon" href="https://jtrevz.github.io/portfolio/">
-                <MdAlternateEmail className="Icon" className="Icon" />
+                <MdAlternateEmail className="Icon" />
               </a>
 
               <a className="Icon" href="https://github.com/jtrevz">

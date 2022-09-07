@@ -21,7 +21,7 @@ export default function Account() {
             sm={4}
           >
             <div className="imageCont d-flex justify-content-center">
-              <img id="userPicture" src={stickFigure}></img>
+              <img id="userPicture" src={stickFigure} alt=""></img>
               <div className="userND">
                 @<span className="bigUserName">jtrevz</span>
               </div>

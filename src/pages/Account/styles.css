@@ -84,7 +84,7 @@
   padding-left: unset;
   padding-right: unset;
   display: flex !important;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   color: #e85a4f;
 }

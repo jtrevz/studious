@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Row, Col, Form, Button, FloatingLabel, Alert } from "react-bootstrap";
+import { Form, Button, FloatingLabel, Alert } from "react-bootstrap";
 import { useAuthContext } from "../../utils/AuthContext";
 import { BsHourglassSplit } from "react-icons/bs";
 import "./styles.css";
