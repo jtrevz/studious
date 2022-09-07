@@ -12,6 +12,8 @@ import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Stack from "react-bootstrap/Stack";
 import { useNewCardContext } from "./../../utils/NewCardContext";
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import { updateDoc, doc, deleteDoc, where, query } from "firebase/firestore";
 import "./styles.css";
 
@@ -65,6 +67,24 @@ export default function Sets() {
     await updateDoc(cardDoc, updates);
   };
 
+  const renderStudyTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Study Set
+    </Tooltip>
+  );
+
+  const renderEditTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Edit Set Name
+    </Tooltip>
+  );
+
+  const renderDeleteTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Delete Set
+    </Tooltip>
+  );
+
   const deleteCard = async (id) => {
     const cardDoc = doc(db, "card", id);
     await deleteDoc(cardDoc);
@@ -84,21 +104,39 @@ export default function Sets() {
           </Col>
           <Col>
             <div className="setEdit">
-              <button className="btnStyling">
-                <BsFillLightningFill className="edit" />
-              </button>
-              <button className="btnStyling">
-                <BsPencil
-                  className="edit"
-                  onClick={() => handleShow("editName")}
-                />
-              </button>
-              <button className="btnStyling">
-                <BsTrash
-                  className="edit"
-                  onClick={() => handleShow("deleteSet")}
-                />
-              </button>
+              <OverlayTrigger
+                delay={{ hide: 450, show: 300 }}
+                overlay={renderStudyTooltip}
+                placement="bottom"
+              >
+                <button className="btnStyling">
+                  <BsFillLightningFill className="edit" />
+                </button>
+              </OverlayTrigger>
+              <OverlayTrigger
+                delay={{ hide: 450, show: 300 }}
+                overlay={renderEditTooltip}
+                placement="bottom"
+              >
+                <button className="btnStyling">
+                  <BsPencil
+                    className="edit"
+                    onClick={() => handleShow("editName")}
+                  />
+                </button>
+              </OverlayTrigger>
+              <OverlayTrigger
+                delay={{ hide: 450, show: 300 }}
+                overlay={renderDeleteTooltip}
+                placement="bottom"
+              >
+                <button className="btnStyling">
+                  <BsTrash
+                    className="edit"
+                    onClick={() => handleShow("deleteSet")}
+                  />
+                </button>
+              </OverlayTrigger>
             </div>
           </Col>
         </Row>
