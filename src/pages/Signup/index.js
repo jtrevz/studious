@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Form, Button, FloatingLabel, Alert } from "react-bootstrap";
 import { useAuthContext } from "../../utils/AuthContext";
 import { BsHourglassSplit } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 export default function Signup() {
@@ -12,6 +13,7 @@ export default function Signup() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const { register } = useAuthContext();
 
@@ -30,6 +32,7 @@ export default function Signup() {
       setError("");
       setLoading(true);
       await register(emailRef.current.value, passwordRef.current.value);
+      navigate("/");
     } catch {
       setError("Failed to create an account");
     }

@@ -5,6 +5,7 @@ import Alert from "react-bootstrap/Alert";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { useAuthContext } from "../../utils/AuthContext";
 import { BsHourglassSplit } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 export default function Login() {
@@ -13,6 +14,7 @@ export default function Login() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const { login } = useAuthContext();
 
@@ -23,6 +25,7 @@ export default function Login() {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+      navigate("/");
     } catch {
       setError("Failed to log in");
     }
