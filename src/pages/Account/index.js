@@ -4,9 +4,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import stickFigure from "../../utils/pics/rihannastickfigure.jpeg";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { useAuthContext } from "../../utils/AuthContext";
 import "./styles.css";
 
 export default function Account() {
+  const { currentUser } = useAuthContext();
   return (
     <div className="">
       <Container fluid>
@@ -39,8 +41,8 @@ export default function Account() {
             </Row>
             <Row className="inputCards">
               <Col className="accountInfoText col flex-grow-4">
-                <h3 className="inputTitles">Username</h3>
-                <p className="inputText">jtrevz</p>
+                <h3 className="inputTitles">Email</h3>
+                <p className="inputText">{currentUser.email}</p>
               </Col>
               <Col className="accountLink col ml-auto">
                 <MdKeyboardArrowRight />

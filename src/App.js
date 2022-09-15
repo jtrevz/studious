@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Account from "./pages/Account";
+import PrivateRoute from "./components/PrivateRoute";
 
 import { NewCardProvider } from "./utils/NewCardContext";
 import { AuthContextProvider } from "./utils/AuthContext";
@@ -19,20 +20,22 @@ function App() {
   return (
     <div className="App">
       <AuthContextProvider>
-        <NavBar />
-        <div className="content">
+        <div>
           <Router>
-            <NewCardProvider>
-              <Routes>
-                <Route exact path="/" element={<Set />} />
-                <Route exact path="/login" element={<Login />} />
-                <Route exact path="/signup" element={<Signup />} />
-                <Route exact path="/sets" element={<Sets />} />
-                <Route exact path="/collection" element={<Set />} />
-                <Route path="/newset" element={<NewSet />} />
-                <Route exact path="/account" element={<Account />} />
-              </Routes>
-            </NewCardProvider>
+            <NavBar />
+            <div className="content">
+              <NewCardProvider>
+                <Routes>
+                  <Route exact path="/" element={<Set />} />
+                  <Route exact path="/login" element={<Login />} />
+                  <Route exact path="/signup" element={<Signup />} />
+                  <Route exact path="/sets" element={<Sets />} />
+                  <Route exact path="/collection" element={<Set />} />
+                  <Route path="/newset" element={<NewSet />} />
+                  <Route exact path="/account" element={<Account />} />
+                </Routes>
+              </NewCardProvider>
+            </div>
           </Router>
         </div>
       </AuthContextProvider>
