@@ -8,6 +8,7 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export function AuthContextProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   const register = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -18,6 +19,7 @@ export function AuthContextProvider({ children }) {
   useEffect(() => {
     const unsuscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      setLoading(false);
     });
 
     return unsuscribe;
@@ -25,7 +27,11 @@ export function AuthContextProvider({ children }) {
 
   const value = { currentUser, register };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 }
 
 export default AuthContext;

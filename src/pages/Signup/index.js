@@ -12,7 +12,7 @@ export default function Signup() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { register, currentUser } = useAuthContext();
+  const { register } = useAuthContext();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -93,7 +93,6 @@ export default function Signup() {
           </Button>
         </Form>
       </div>
-      {JSON.stringify(currentUser && currentUser.email)}
     </div>
   );
 }

@@ -27,8 +27,8 @@ function App() {
                 <Route exact path="/" element={<Set />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
-                <Route exact path="sets" element={<Sets />} />
-                <Route exact path="collection" element={<Set />} />
+                <Route exact path="/sets" element={<Sets />} />
+                <Route exact path="/collection" element={<Set />} />
                 <Route path="/newset" element={<NewSet />} />
                 <Route exact path="/account" element={<Account />} />
               </Routes>
