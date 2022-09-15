@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import stickFigure from "../../utils/pics/rihannastickfigure.jpeg";
+import NavBar from "../../components/NavBar";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useAuthContext } from "../../utils/AuthContext";
 import "./styles.css";
@@ -11,6 +12,7 @@ export default function Account() {
   const { currentUser } = useAuthContext();
   return (
     <div className="">
+      <NavBar />
       <Container fluid>
         <Row className="d-flex justify-content-start">
           <div className="accountPTitle">Account Settings</div>

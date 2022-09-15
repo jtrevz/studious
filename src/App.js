@@ -20,22 +20,19 @@ function App() {
   return (
     <div className="App">
       <AuthContextProvider>
-        <div>
+        <div className="content">
           <Router>
-            <NavBar />
-            <div className="content">
-              <NewCardProvider>
-                <Routes>
-                  <Route exact path="/" element={<Set />} />
-                  <Route exact path="/login" element={<Login />} />
-                  <Route exact path="/signup" element={<Signup />} />
-                  <Route exact path="/sets" element={<Sets />} />
-                  <Route exact path="/collection" element={<Set />} />
-                  <Route path="/newset" element={<NewSet />} />
-                  <Route exact path="/account" element={<Account />} />
-                </Routes>
-              </NewCardProvider>
-            </div>
+            <NewCardProvider>
+              <Routes>
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/signup" element={<Signup />} />
+                <Route exact path="/" element={<Set />} />
+                <Route exact path="/sets" element={<Sets />} />
+                <Route exact path="/collection" element={<Set />} />
+                <Route path="/newset" element={<NewSet />} />
+                <Route exact path="/account" element={<Account />} />
+              </Routes>
+            </NewCardProvider>
           </Router>
         </div>
       </AuthContextProvider>
