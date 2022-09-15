@@ -9,13 +9,18 @@ export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const { register } = useAuthContext();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+
+    if (passwordRef.current.value < 6) {
+      return setError("Password must be at least 6 characters long");
+    }
 
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       return setError("Passwords do not match");
@@ -24,7 +29,7 @@ export default function Signup() {
     try {
       setError("");
       setLoading(true);
-      register(emailRef.current.value, passwordRef.current.value);
+      await register(emailRef.current.value, passwordRef.current.value);
     } catch {
       setError("Failed to create an account");
     }
@@ -67,6 +72,8 @@ export default function Signup() {
               placeholder="pass123"
               ref={passwordRef}
               required
+              name="password"
+              autoComplete="on"
             />
           </FloatingLabel>
           <FloatingLabel label="Confirm Password" className="mb-3">
@@ -75,6 +82,8 @@ export default function Signup() {
               placeholder="pass123"
               ref={confirmPasswordRef}
               required
+              name="password"
+              autoComplete="on"
             />
           </FloatingLabel>
           <h5 className="smallBanner">

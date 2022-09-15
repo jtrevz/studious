@@ -14,17 +14,17 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { register } = useAuthContext();
+  const { login } = useAuthContext();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     try {
       setError("");
       setLoading(true);
-      register(emailRef.current.value, passwordRef.current.value);
+      await login(emailRef.current.value, passwordRef.current.value);
     } catch {
-      setError("Failed to create an account");
+      setError("Failed to log in");
     }
     setLoading(false);
   }
@@ -36,7 +36,10 @@ export default function Login() {
           <h1>studious</h1>
           <BsHourglassSplit size={80} color="white" />
         </div>
-        <Form className="form col-lg-6 col-md-8 col-sm-10 col-xs-11">
+        <Form
+          className="form col-lg-6 col-md-8 col-sm-10 col-xs-11"
+          onSubmit={handleSubmit}
+        >
           {error && <Alert variant="danger">{error}</Alert>}
           <FloatingLabel label="Email" className="mb-3">
             <Form.Control
@@ -49,7 +52,7 @@ export default function Login() {
           <FloatingLabel label="Password" className="mb-3 password">
             <Form.Control
               type="password"
-              placeholder="Password"
+              placeholder="pass123"
               ref={passwordRef}
               required
             />
