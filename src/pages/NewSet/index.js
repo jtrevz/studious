@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import NavBar from "../../components/NavBar";
 import { useNewCardContext } from "./../../utils/NewCardContext";
 import { db } from "../../firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
@@ -47,6 +48,7 @@ export default function NewSet() {
 
   return (
     <div>
+      <NavBar/>
       <Container fluid>
         {currentSet.name ? (
           <>

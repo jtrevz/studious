@@ -9,6 +9,7 @@ import Spinner from "react-bootstrap/Spinner";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import NavBar from "../../components/NavBar";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { Row, Col } from "react-bootstrap";
 import { db } from "../../firebase";
@@ -59,6 +60,7 @@ export default function Set() {
 
   return (
     <div>
+      <Navbar />
       <Container fluid>
         <Row>
           <Col>

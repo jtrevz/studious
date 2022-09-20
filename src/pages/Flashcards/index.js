@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 // import Set from "../../components/Set";
 import Flashcard from "../../components/Flashcard";
 import NewCard from "../../components/NewCard";
+import NavBar from "../../components/NavBar";
 import Modal from "react-bootstrap/Modal";
 import Spinner from "react-bootstrap/Spinner";
 import {
@@ -49,6 +50,7 @@ export default function Flashcards() {
 
   return (
     <div>
+      <NavBar />
       <div className="buttons">
         <BsPlusCircleFill className="button" onClick={handleShow} />
         {/* <BsPencil className="button pencil" /> */}

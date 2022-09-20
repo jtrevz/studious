@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Stack from "react-bootstrap/Stack";
+import NavBar from "../../components/NavBar";
 import { useNewCardContext } from "./../../utils/NewCardContext";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -111,6 +112,7 @@ export default function Sets() {
   }, []);
   return (
     <div>
+      <NavBar/>
       <Container fluid>
         <Row>
           <Col className="setContainer">
