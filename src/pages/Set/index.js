@@ -60,7 +60,7 @@ export default function Set() {
 
   return (
     <div>
-      <Navbar />
+      <NavBar />
       <Container fluid>
         <Row>
           <Col>

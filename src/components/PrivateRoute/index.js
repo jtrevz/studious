@@ -1,5 +1,4 @@
 import React from "react";
-import { Route } from "react-router-dom";
 import { useAuthContext } from "../../utils/AuthContext";
 
 import { Navigate, Outlet } from "react-router-dom";
