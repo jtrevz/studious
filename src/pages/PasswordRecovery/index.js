@@ -8,9 +8,8 @@ import { BsHourglassSplit } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-export default function Login() {
+export default function PasswordRecovery() {
   const emailRef = useRef();
-  const passwordRef = useRef();
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,7 +23,7 @@ export default function Login() {
     try {
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      //   await login(emailRef.current.value, passwordRef.current.value);
       navigate("/");
     } catch {
       setError("Failed to log in");
@@ -43,8 +42,9 @@ export default function Login() {
           className="form col-lg-6 col-md-8 col-sm-10 col-xs-11"
           onSubmit={handleSubmit}
         >
+          <h2 className="mb-4 text">Password Reset</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <FloatingLabel label="Email" className="mb-3">
+          <FloatingLabel label="Email" className="mb-4">
             <Form.Control
               type="email"
               placeholder="jsmith@mail.com"
@@ -52,18 +52,6 @@ export default function Login() {
               required
             />
           </FloatingLabel>
-          <FloatingLabel label="Password" className="mb-3 password">
-            <Form.Control
-              type="password"
-              placeholder="pass123"
-              ref={passwordRef}
-              required
-            />
-          </FloatingLabel>
-          <h5 className="smallBanner"><a href="./password-recovery">Forgot Password?</a></h5>
-          <h5 className="smallBanner">
-            Don't have an account? <a href="./signup">Sign Up</a>
-          </h5>
           <Button
             disabled={loading}
             type="submit"
@@ -71,11 +59,17 @@ export default function Login() {
               backgroundColor: "#e85a4f",
               borderColor: "#e85a4f",
             }}
-            className="btn-custom float-end"
+            className="btn-custom w-100 mb-2"
           >
-            Log In
+            Reset Password
           </Button>
+          <h5 className="smallBanner pBanner d-flex justify-content-center mt-2">
+            <a href="./login">Login</a>
+          </h5>
         </Form>
+        <h5 className="smallBanner mt-2">
+          Don't have an account? <a href="./signup">Sign Up</a>
+        </h5>
       </div>
     </div>
   );

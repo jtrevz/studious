@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer";
 import Account from "./pages/Account";
 import PrivateRoute from "./components/PrivateRoute";
-
+import PasswordRecovery from "./pages/PasswordRecovery";
 import { NewCardProvider } from "./utils/NewCardContext";
 import { AuthContextProvider } from "./utils/AuthContext";
 
@@ -24,6 +24,11 @@ function App() {
               <Routes>
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
+                <Route
+                  exact
+                  path="/password-recovery"
+                  element={<PasswordRecovery />}
+                />
                 <Route exact path="/" element={<PrivateRoute />}>
                   <Route exact path="/" element={<Set />} />
                 </Route>
