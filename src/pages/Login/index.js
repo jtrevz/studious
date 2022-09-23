@@ -60,7 +60,9 @@ export default function Login() {
               required
             />
           </FloatingLabel>
-          <h5 className="smallBanner"><a href="./password-recovery">Forgot Password?</a></h5>
+          <h5 className="smallBanner">
+            <a href="./reset-password">Forgot Password?</a>
+          </h5>
           <h5 className="smallBanner">
             Don't have an account? <a href="./signup">Sign Up</a>
           </h5>

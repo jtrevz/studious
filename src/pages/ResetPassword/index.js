@@ -5,28 +5,27 @@ import Alert from "react-bootstrap/Alert";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { useAuthContext } from "../../utils/AuthContext";
 import { BsHourglassSplit } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-export default function PasswordRecovery() {
+export default function ResetPassword() {
   const emailRef = useRef();
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const { login } = useAuthContext();
+  const [message, setMessage] = useState("");
+  const { resetPassword } = useAuthContext();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     try {
+      setMessage("");
       setError("");
       setLoading(true);
-      //   await login(emailRef.current.value, passwordRef.current.value);
-      navigate("/");
+      await resetPassword(emailRef.current.value);
+      setMessage("Check your inbox for further instructions");
     } catch {
-      setError("Failed to log in");
+      setError("Failed to reset password");
     }
     setLoading(false);
   }
