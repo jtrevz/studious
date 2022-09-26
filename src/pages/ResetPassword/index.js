@@ -43,6 +43,7 @@ export default function ResetPassword() {
         >
           <h2 className="mb-4 text">Password Reset</h2>
           {error && <Alert variant="danger">{error}</Alert>}
+          {message && <Alert variant="success">{message}</Alert>}
           <FloatingLabel label="Email" className="mb-4">
             <Form.Control
               type="email"
