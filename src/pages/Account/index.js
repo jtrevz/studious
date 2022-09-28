@@ -30,6 +30,8 @@ export default function Account() {
     setShowEditEmail(false);
     setShowNameEdit(false);
     setShowEditPassword(false);
+    setError("");
+    setMessage("");
   };
 
   const handleShow = (type) => {
