@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import stickFigure from "../../utils/pics/rihannastickfigure.jpeg";
 import NavBar from "../../components/NavBar";
 import { BsPencil } from "react-icons/bs";
@@ -11,7 +13,6 @@ import { useAuthContext } from "../../utils/AuthContext";
 import "./styles.css";
 
 export default function Account() {
-  const 
   const { currentUser } = useAuthContext();
 
   const [showNameEdit, setShowNameEdit] = useState(false);
@@ -94,6 +95,63 @@ export default function Account() {
           </Col>
         </Row>
       </Container>
+      <Modal show={showNameEdit} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title className="jFont">Edit Name</Modal.Title>
+        </Modal.Header>
+        <Form>
+          <Modal.Body>
+            <Form.Group className="editSet">
+              <Form.Control defaultValue="CURRENT NAME"></Form.Control>
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer className="mb-0">
+            <Button
+              style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
+            >
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
+      <Modal show={showEditEmail} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title className="jFont">Edit Email</Modal.Title>
+        </Modal.Header>
+        <Form>
+          <Modal.Body>
+            <Form.Group className="editSet">
+              <Form.Control defaultValue="CURRENT NAME"></Form.Control>
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer className="mb-0">
+            <Button
+              style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
+            >
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
+      <Modal show={showEditPassword} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title className="jFont">Edit Password</Modal.Title>
+        </Modal.Header>
+        <Form>
+          <Modal.Body>
+            <Form.Group className="editSet">
+              <Form.Control defaultValue="CURRENT NAME"></Form.Control>
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer className="mb-0">
+            <Button
+              style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
+            >
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
     </div>
   );
 }
