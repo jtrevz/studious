@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   updateEmail,
+  onAuthStateChanged,
   updatePassword,
   signOut,
 } from "firebase/auth";
@@ -42,13 +43,13 @@ export function AuthContextProvider({ children }) {
   };
 
   useEffect(() => {
-    const unsuscribe = auth.onAuthStateChanged((user) => {
+    const unsuscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
     });
 
     return unsuscribe;
-  });
+  }, []);
 
   const value = {
     currentUser,
