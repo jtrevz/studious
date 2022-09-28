@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import stickFigure from "../../utils/pics/rihannastickfigure.jpeg";
 import NavBar from "../../components/NavBar";
-import Tooltip from "react-bootstrap/Tooltip";
+import { BsPencil } from "react-icons/bs";
 import Modal from "react-bootstrap/Modal";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useAuthContext } from "../../utils/AuthContext";
 import "./styles.css";
 
 export default function Account() {
+  const 
   const { currentUser } = useAuthContext();
 
   const [showNameEdit, setShowNameEdit] = useState(false);
@@ -60,7 +61,10 @@ export default function Account() {
                 <p className="inputText">Jennifer Trevizo</p>
               </Col>
               <Col className="accountLink col ml-auto">
-                <Tooltip />
+                <BsPencil
+                  className="accTool"
+                  onClick={() => handleShow("editName")}
+                />
               </Col>
             </Row>
             <Row className="inputCards">
@@ -69,7 +73,10 @@ export default function Account() {
                 <p className="inputText">{currentUser.email}</p>
               </Col>
               <Col className="accountLink col ml-auto">
-                <Tooltip />
+                <BsPencil
+                  className="accTool"
+                  onClick={() => handleShow("editEmail")}
+                />
               </Col>
             </Row>
             <Row className="inputCards inBottom">
@@ -78,7 +85,10 @@ export default function Account() {
                 <p className="inputText">*******</p>
               </Col>
               <Col className="accountLink col ml-auto">
-                <Tooltip />
+                <BsPencil
+                  className="accTool"
+                  onClick={() => handleShow("editPassword")}
+                />
               </Col>
             </Row>
           </Col>

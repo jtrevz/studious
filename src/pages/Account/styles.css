@@ -39,6 +39,11 @@
   color: var(--bs-gray-dark);
 }
 
+.accTool {
+  /* color: gray; */
+  cursor: pointer;
+}
+
 #userPicture {
   display: block;
   border-radius: 50%;
