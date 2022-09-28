@@ -10,7 +10,7 @@ import "./styles.css";
 export default function Footer() {
   return (
     <div>
-      <footer className="page-footer">
+      <footer className="page-footer mt-5">
         <Container>
           <Row className="foot">
             <Col
