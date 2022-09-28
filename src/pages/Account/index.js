@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -8,12 +9,16 @@ import stickFigure from "../../utils/pics/rihannastickfigure.jpeg";
 import NavBar from "../../components/NavBar";
 import { BsPencil } from "react-icons/bs";
 import Modal from "react-bootstrap/Modal";
-import { MdKeyboardArrowRight } from "react-icons/md";
 import { useAuthContext } from "../../utils/AuthContext";
 import "./styles.css";
 
 export default function Account() {
   const { currentUser } = useAuthContext();
+  const [error, setError] = useState("");
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
 
   const [showNameEdit, setShowNameEdit] = useState(false);
   const [showEditEmail, setShowEditEmail] = useState(false);
@@ -34,6 +39,19 @@ export default function Account() {
       setShowEditPassword(true);
     }
   };
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (passwordRef.current.value < 6) {
+      return setError("Password must be at least 6 characters long");
+    }
+
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      return setError("Passwords do not match");
+    }
+  }
+
   return (
     <div>
       <NavBar />
@@ -83,7 +101,7 @@ export default function Account() {
             <Row className="inputCards inBottom">
               <Col className="accountInfoText col flex-grow-4">
                 <h3 className="inputTitles">Password </h3>
-                <p className="inputText">*******</p>
+                <p className="inputText"></p>
               </Col>
               <Col className="accountLink col ml-auto">
                 <BsPencil
@@ -102,7 +120,10 @@ export default function Account() {
         <Form>
           <Modal.Body>
             <Form.Group className="editSet">
-              <Form.Control defaultValue="CURRENT NAME"></Form.Control>
+              <Form.Control
+                type="name"
+                defaultValue="CURRENT NAME"
+              ></Form.Control>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer className="mb-0">
@@ -118,15 +139,20 @@ export default function Account() {
         <Modal.Header closeButton>
           <Modal.Title className="jFont">Edit Email</Modal.Title>
         </Modal.Header>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Modal.Body>
             <Form.Group className="editSet">
-              <Form.Control defaultValue="CURRENT NAME"></Form.Control>
+              <Form.Control
+                type="email"
+                ref={emailRef}
+                defaultValue={currentUser.email}
+              ></Form.Control>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer className="mb-0">
             <Button
               style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
+              type="submit"
             >
               Save Changes
             </Button>
@@ -137,15 +163,28 @@ export default function Account() {
         <Modal.Header closeButton>
           <Modal.Title className="jFont">Edit Password</Modal.Title>
         </Modal.Header>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Modal.Body>
-            <Form.Group className="editSet">
-              <Form.Control defaultValue="CURRENT NAME"></Form.Control>
+            {error && <Alert variant="danger">{error}</Alert>}
+            <Form.Group className="editSet mb-3">
+              <Form.Control
+                type="new-password"
+                ref={passwordRef}
+                placeholder="Write new password here"
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group className="editSet mt-3">
+              <Form.Control
+                type="new-password"
+                ref={confirmPasswordRef}
+                placeholder="Confirm new password"
+              ></Form.Control>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer className="mb-0">
             <Button
               style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
+              type="submit"
             >
               Save Changes
             </Button>
