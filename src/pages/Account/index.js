@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Row from "react-bootstrap/Row";
@@ -13,8 +13,10 @@ import { useAuthContext } from "../../utils/AuthContext";
 import "./styles.css";
 
 export default function Account() {
-  const { currentUser } = useAuthContext();
+  const { currentUser, updateUserEmail, updateUserPassword } = useAuthContext();
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -40,16 +42,41 @@ export default function Account() {
     }
   };
 
-  async function handleSubmit(e) {
+  async function handleSubmitPassword(e) {
     e.preventDefault();
 
-    if (passwordRef.current.value < 6) {
+    if (passwordRef && passwordRef.current.value < 6) {
       return setError("Password must be at least 6 characters long");
     }
-
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       return setError("Passwords do not match");
     }
+    try {
+      setError("");
+      setMessage("");
+      setLoading(true);
+      console.log(passwordRef.current.value);
+      await updateUserPassword(passwordRef.current.value);
+      setMessage("Password updated successfully");
+    } catch {
+      setError("Failed to update account");
+    }
+    setLoading(false);
+  }
+
+  async function handleSubmitEmail(e) {
+    e.preventDefault();
+
+    try {
+      setError("");
+      setMessage("");
+      setLoading(true);
+      await updateUserEmail(emailRef.current.value);
+      setMessage("Email updated successfully");
+    } catch {
+      setError("Failed to update account");
+    }
+    setLoading(false);
   }
 
   return (
@@ -139,8 +166,10 @@ export default function Account() {
         <Modal.Header closeButton>
           <Modal.Title className="jFont">Edit Email</Modal.Title>
         </Modal.Header>
-        <Form onSubmit={handleSubmit}>
+        <Form>
           <Modal.Body>
+            {error && <Alert variant="danger">{error}</Alert>}
+            {message && <Alert variant="success">{message}</Alert>}
             <Form.Group className="editSet">
               <Form.Control
                 type="email"
@@ -153,6 +182,8 @@ export default function Account() {
             <Button
               style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
               type="submit"
+              disabled={loading}
+              onClick={handleSubmitEmail}
             >
               Save Changes
             </Button>
@@ -163,9 +194,10 @@ export default function Account() {
         <Modal.Header closeButton>
           <Modal.Title className="jFont">Edit Password</Modal.Title>
         </Modal.Header>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmitPassword}>
           <Modal.Body>
             {error && <Alert variant="danger">{error}</Alert>}
+            {message && <Alert variant="success">{message}</Alert>}
             <Form.Group className="editSet mb-3">
               <Form.Control
                 type="new-password"
