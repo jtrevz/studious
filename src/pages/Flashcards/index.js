@@ -13,17 +13,21 @@ import {
 } from "react-icons/bs";
 import "./styles.css";
 import { db } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore";
-import NewCardContext from "./../../utils/NewCardContext";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { useNewCardContext } from "./../../utils/NewCardContext";
 
 export default function Flashcards() {
   const [cards, setCards] = useState([]);
   const [currentCard, setCurrentCard] = useState(0);
 
+  const { currentSet } = useNewCardContext();
+  const q = query(collection(db, "card"), where("set", "==", currentSet.id));
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const cardCollectionRef = collection(db, "card");
+
+  // const cardCollectionRef = collection(db, "card");
 
   const next = () => {
     if (currentCard === cards.length - 1) {
@@ -40,7 +44,7 @@ export default function Flashcards() {
   };
 
   const getCards = async () => {
-    const data = await getDocs(cardCollectionRef);
+    const data = await getDocs(q);
     await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 

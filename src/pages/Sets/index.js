@@ -12,6 +12,7 @@ import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Stack from "react-bootstrap/Stack";
 import NavBar from "../../components/NavBar";
+import { useNavigate } from "react-router-dom";
 import { useNewCardContext } from "./../../utils/NewCardContext";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -23,6 +24,8 @@ export default function Sets() {
   const [cards, setCards] = useState([]);
   const { currentSet } = useNewCardContext();
   const cardCollectionRef = collection(db, "card");
+
+  const navigate = useNavigate();
 
   const [updateFront, setUpdateFront] = useState("");
   const [updateBack, setUpdateBack] = useState("");
@@ -56,6 +59,10 @@ export default function Sets() {
     const q = query(collection(db, "card"), where("set", "==", currentSet.id));
     const data = await getDocs(q);
     await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+
+  const navigateSet = () => {
+    navigate("/flashcards");
   };
 
   const updateCard = async (id) => {
@@ -112,7 +119,7 @@ export default function Sets() {
   }, []);
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <Container fluid>
         <Row>
           <Col className="setContainer">
@@ -126,7 +133,7 @@ export default function Sets() {
                 placement="bottom"
               >
                 <button className="btnStyling">
-                  <BsFillLightningFill className="edit" />
+                  <BsFillLightningFill className="edit" onClick={navigateSet} />
                 </button>
               </OverlayTrigger>
               <OverlayTrigger

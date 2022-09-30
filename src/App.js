@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer";
 import Account from "./pages/Account";
 import PrivateRoute from "./components/PrivateRoute";
+import Flashcard from "./pages/Flashcards";
 import ResetPassword from "./pages/ResetPassword";
 import { NewCardProvider } from "./utils/NewCardContext";
 import { AuthContextProvider } from "./utils/AuthContext";
@@ -35,6 +36,10 @@ function App() {
                 <Route exact path="/sets" element={<PrivateRoute />}>
                   <Route exact path="/sets" element={<Sets />} />
                 </Route>
+                <Route exact path="/flashcards" element={<PrivateRoute />}>
+                  <Route exact path="/flashcards" element={<Flashcard />} />
+                </Route>
+
                 <Route exact path="/collection" element={<PrivateRoute />}>
                   <Route exact path="/collection" element={<Set />} />
                 </Route>
