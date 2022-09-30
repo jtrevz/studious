@@ -13,17 +13,22 @@ import NavBar from "../../components/NavBar";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { Row, Col } from "react-bootstrap";
 import { db } from "../../firebase";
-import { collection, addDoc, getDocs, doc } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import "./styles.css";
+import { useAuthContext } from "./../../utils/AuthContext";
 import { useNewCardContext } from "./../../utils/NewCardContext";
 
 export default function Set() {
   const [sets, setSets] = useState([]);
   const [newSet, setNewSet] = useState([]);
+  const { currentUser } = useAuthContext();
 
   const { estNewSet } = useNewCardContext();
 
-  const cardCollectionRef = collection(db, "sets");
+  const cardCollectionRef = query(
+    collection(db, "sets"),
+    where("author", "==", currentUser.uid)
+  );
 
   const createNewSet = async () => {
     await addDoc(cardCollectionRef, { name: newSet }).then((set) =>
