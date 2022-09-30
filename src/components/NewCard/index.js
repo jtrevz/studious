@@ -16,7 +16,11 @@ export default function NewCard({ handleClose, getCards }) {
   const cardCollectionRef = collection(db, "card");
 
   const createNewCard = async () => {
-    await addDoc(cardCollectionRef, { front: newFront, back: newBack, set: currentSet });
+    await addDoc(cardCollectionRef, {
+      front: newFront,
+      back: newBack,
+      set: currentSet.id,
+    });
   };
 
   return (
