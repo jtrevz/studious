@@ -38,7 +38,9 @@ export default function NavBar() {
             {/* <div className="pic">
               <BsPerson classname="userPFP" />
             </div> */}
-            <NavDropdown title={currentUser.email} align="end">
+            <NavDropdown title={currentUser.displayName
+                    ? currentUser.displayName
+                    : currentUser.email} align="end">
               <NavDropdown.Item href="/account">Account</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={handleLogout}>
