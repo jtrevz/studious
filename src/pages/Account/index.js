@@ -94,7 +94,7 @@ export default function Account() {
       setError("");
       setMessage("");
       setLoading(true);
-      await updateUserName();
+      await updateUserName(userNameRef.current.value);
       setMessage("Username updated successfully");
     } catch {
       setError("Failed to update account");
@@ -119,16 +119,23 @@ export default function Account() {
             <div className="imageCont d-flex justify-content-center">
               <img id="userPicture" src={stickFigure} alt=""></img>
               <div className="userND">
-                @<span className="bigUserName">jtrevz</span>
+                @
+                <span className="bigUserName">
+                  {currentUser.displayName
+                    ? currentUser.displayName
+                    : "No username listed"}
+                </span>
               </div>
             </div>
           </Col>
           <Col sm={7} className="userInfo userCard">
             <Row className="inputCards inTop">
               <Col className="accountInfoText col flex-grow-4">
-                <h3 className="inputTitles">Userame</h3>
+                <h3 className="inputTitles">Username</h3>
                 <p className="inputText">
-                  {currentUser.name ? currentUser.name : "Add a username!"}
+                  {currentUser.displayName
+                    ? currentUser.displayName
+                    : "Add a username!"}
                 </p>
               </Col>
               <Col className="accountLink col ml-auto">
@@ -177,15 +184,17 @@ export default function Account() {
               <Form.Control
                 type="username"
                 ref={userNameRef}
-                defaultValue={
-                  currentUser.name ? currentUser.name : "Add a username!"
-                }
+                defaultValue={currentUser.displayName}
+                placeholder="Add a username!"
               ></Form.Control>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer className="mb-0">
             <Button
               style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
+              type="submit"
+              disabled={loading}
+              onClick={handleSubmitUserName}
             >
               Save Changes
             </Button>
