@@ -13,12 +13,18 @@ import { useAuthContext } from "../../utils/AuthContext";
 import "./styles.css";
 
 export default function Account() {
-  const { currentUser, updateUserEmail, updateUserPassword } = useAuthContext();
+  const {
+    currentUser,
+    updateUserEmail,
+    updateUserPassword,
+    updateUserName,
+  } = useAuthContext();
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const emailRef = useRef();
+  const userNameRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
@@ -81,6 +87,21 @@ export default function Account() {
     setLoading(false);
   }
 
+  async function handleSubmitUserName(e) {
+    e.preventDefault();
+
+    try {
+      setError("");
+      setMessage("");
+      setLoading(true);
+      await updateUserName();
+      setMessage("Username updated successfully");
+    } catch {
+      setError("Failed to update account");
+    }
+    setLoading(false);
+  }
+
   return (
     <div>
       <NavBar />
@@ -105,8 +126,10 @@ export default function Account() {
           <Col sm={7} className="userInfo userCard">
             <Row className="inputCards inTop">
               <Col className="accountInfoText col flex-grow-4">
-                <h3 className="inputTitles">Name</h3>
-                <p className="inputText">Jennifer Trevizo</p>
+                <h3 className="inputTitles">Userame</h3>
+                <p className="inputText">
+                  {currentUser.name ? currentUser.name : "Add a username!"}
+                </p>
               </Col>
               <Col className="accountLink col ml-auto">
                 <BsPencil
@@ -148,10 +171,15 @@ export default function Account() {
         </Modal.Header>
         <Form>
           <Modal.Body>
+            {error && <Alert variant="danger">{error}</Alert>}
+            {message && <Alert variant="success">{message}</Alert>}
             <Form.Group className="editSet">
               <Form.Control
-                type="name"
-                defaultValue="CURRENT NAME"
+                type="username"
+                ref={userNameRef}
+                defaultValue={
+                  currentUser.name ? currentUser.name : "Add a username!"
+                }
               ></Form.Control>
             </Form.Group>
           </Modal.Body>

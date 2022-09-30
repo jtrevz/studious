@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 export default function Signup() {
-  const userNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
@@ -52,14 +51,6 @@ export default function Signup() {
         >
           <h3 className="bigBanner">Welcome to studious!</h3>
           {error && <Alert variant="danger">{error}</Alert>}
-          <FloatingLabel label="Username" className="mb-3">
-            <Form.Control
-              type="username"
-              placeholder="jsmith"
-              ref={userNameRef}
-              required
-            />
-          </FloatingLabel>
 
           <FloatingLabel label="Email Address" className="mb-3">
             <Form.Control

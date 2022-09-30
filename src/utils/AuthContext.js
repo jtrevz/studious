@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
   updatePassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
 const AuthContext = createContext();
@@ -23,9 +24,11 @@ export function AuthContextProvider({ children }) {
   const register = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
+
   const logout = () => {
     return signOut(auth);
   };
@@ -40,6 +43,10 @@ export function AuthContextProvider({ children }) {
 
   const updateUserPassword = (password) => {
     return updatePassword(auth.currentUser, password);
+  };
+
+  const updateUserName = (username) => {
+    return updateProfile(auth.currentUser, { displayName: username });
   };
 
   useEffect(() => {
@@ -58,6 +65,7 @@ export function AuthContextProvider({ children }) {
     logout,
     resetPassword,
     updateUserEmail,
+    updateUserName,
     updateUserPassword,
   };
 
