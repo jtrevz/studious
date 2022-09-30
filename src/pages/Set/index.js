@@ -25,13 +25,15 @@ export default function Set() {
 
   const { estNewSet } = useNewCardContext();
 
-  const cardCollectionRef = query(
+  const cardCollectionRef = collection(db, "sets");
+
+  const q = query(
     collection(db, "sets"),
     where("author", "==", currentUser.uid)
   );
 
   const createNewSet = async () => {
-    await addDoc(cardCollectionRef, { name: newSet }).then((set) =>
+    await addDoc(cardCollectionRef, { name: newSet , author: currentUser.uid}).then((set) =>
       estNewSet(set.id, newSet)
     );
   };
@@ -55,7 +57,7 @@ export default function Set() {
   const handleShow = () => setShow(true);
 
   const getSets = async () => {
-    const data = await getDocs(cardCollectionRef);
+    const data = await getDocs(q);
     await setSets(data.docs.map((doc) => ({ ...doc.data(), key: doc.id })));
   };
 
