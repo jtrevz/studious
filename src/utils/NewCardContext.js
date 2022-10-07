@@ -1,4 +1,13 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
+import { db } from "../firebase";
+import {
+  updateDoc,
+  doc,
+  where,
+  query,
+  getDoc,
+  collection,
+} from "firebase/firestore";
 
 const NewCardContext = createContext();
 
@@ -9,15 +18,27 @@ export function NewCardProvider({ children }) {
   const [back, setBack] = useState("");
   const [currentSet, setCurrentSet] = useState({ id: "", name: "" });
 
+  const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
+
   const addNewCard = (card) => {};
 
   const createNewBack = (input) => {
     setBack(input);
   };
 
-  const estNewSet = (inputid, inputname) => {
-    setCurrentSet({ id: inputid, name: inputname });
+  const estNewSet = async (inputid, inputname) => {
+    const currentSetID = await updateDoc(currentSetDoc, { author: inputid });
   };
+  useEffect(() => {
+    const getCurrentSet = async () => {
+      const data = await getDoc(currentSetDoc);
+      const tempSet = data.data();
+      console.log(tempSet.author);
+      const currentDOMSet = await getDoc(doc(db, "sets", tempSet.author));
+      console.log(currentDOMSet.data());
+    };
+    getCurrentSet();
+  }, []);
 
   return (
     <NewCardContext.Provider

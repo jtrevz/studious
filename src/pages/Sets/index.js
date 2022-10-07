@@ -23,7 +23,6 @@ export default function Sets() {
   const [set, setSet] = useState({});
   const [cards, setCards] = useState([]);
   const { currentSet } = useNewCardContext();
-  const cardCollectionRef = collection(db, "card");
 
   const navigate = useNavigate();
 
