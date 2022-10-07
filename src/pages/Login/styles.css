@@ -27,6 +27,11 @@
   margin-right: 2%;
 }
 
+.studious {
+  height: 4rem;
+  width: 4rem !important;
+}
+
 .form {
   margin-top: 2.5%;
   background-color: white;
@@ -59,4 +64,19 @@ a {
 
 .btn-custom {
   margin-top: 0% !important;
+}
+
+@media screen and (max-width: 576px) {
+  .form {
+    margin-top: 5% !important;
+    width: 90%;
+  }
+
+  .brand h1 {
+    font-size: 3rem !important;
+  }
+  .studious {
+    height: 3rem;
+    width: 3rem !important;
+  }
 }

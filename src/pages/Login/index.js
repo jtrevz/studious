@@ -35,12 +35,12 @@ export default function Login() {
   return (
     <div className="loginContent">
       <div className="container">
-        <div className="brand">
+        <div className="brand d-flex align-items-center">
           <h1>studious</h1>
-          <BsHourglassSplit size={80} color="white" />
+          <BsHourglassSplit color="white" className="studious" />
         </div>
         <Form
-          className="form col-lg-6 col-md-8 col-sm-10 col-xs-11"
+          className="form col-lg-6 col-md-8 col-sm-10 col-xs-12"
           onSubmit={handleSubmit}
         >
           {error && <Alert variant="danger">{error}</Alert>}
