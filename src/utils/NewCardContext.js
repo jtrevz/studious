@@ -27,15 +27,17 @@ export function NewCardProvider({ children }) {
   };
 
   const estNewSet = async (inputid, inputname) => {
-    const currentSetID = await updateDoc(currentSetDoc, { author: inputid });
+    await updateDoc(currentSetDoc, { author: inputid });
   };
   useEffect(() => {
     const getCurrentSet = async () => {
       const data = await getDoc(currentSetDoc);
       const tempSet = data.data();
-      console.log(tempSet.author);
       const currentDOMSet = await getDoc(doc(db, "sets", tempSet.author));
-      console.log(currentDOMSet.data());
+      await setCurrentSet({
+        id: currentDOMSet.id,
+        name: currentDOMSet.data().name,
+      });
     };
     getCurrentSet();
   }, []);
