@@ -41,9 +41,9 @@ export default function Signup() {
   return (
     <div className="loginContent">
       <div className="container">
-        <div className="brand">
+        <div className="brand brand d-flex align-items-center">
           <h1>studious</h1>
-          <BsHourglassSplit size={80} color="white" />
+          <BsHourglassSplit size={80} color="white" className="studious" />
         </div>
         <Form
           className="form col-lg-6 col-md-8 col-sm-10 col-xs-11"

@@ -33,15 +33,15 @@ export default function ResetPassword() {
   return (
     <div className="loginContent">
       <div className="container">
-        <div className="brand">
+        <div className="brand brand d-flex align-items-center">
           <h1>studious</h1>
           <BsHourglassSplit size={80} color="white" />
         </div>
         <Form
-          className="form col-lg-6 col-md-8 col-sm-10 col-xs-11"
+          className="form col-lg-6 col-md-8 col-sm-10 col-xs-11 py-3"
           onSubmit={handleSubmit}
         >
-          <h2 className="mb-4 text">Password Reset</h2>
+          <h2 className="mb-3 text">Password Reset</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           {message && <Alert variant="success">{message}</Alert>}
           <FloatingLabel label="Email" className="mb-4">
@@ -67,7 +67,7 @@ export default function ResetPassword() {
             <a href="./login">Login</a>
           </h5>
         </Form>
-        <h5 className="smallBanner mt-2">
+        <h5 className="smallBanner mt-3">
           Don't have an account? <a href="./signup">Sign Up</a>
         </h5>
       </div>
