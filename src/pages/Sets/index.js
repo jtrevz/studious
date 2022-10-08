@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { BsFillLightningFill, BsPencil, BsTrash } from "react-icons/bs";
 import { TiWarningOutline } from "react-icons/ti";
@@ -20,9 +20,10 @@ import { updateDoc, doc, deleteDoc, where, query } from "firebase/firestore";
 import "./styles.css";
 
 export default function Sets() {
-  const [set, setSet] = useState({});
+  const [set, setSet] = useState([]);
   const [cards, setCards] = useState([]);
-  const { currentSet } = useNewCardContext();
+  const [loading, setLoading] = useState(true);
+  // const { currentSet, getCurrentSet } = useNewCardContext();
 
   const navigate = useNavigate();
 
@@ -53,11 +54,24 @@ export default function Sets() {
   };
 
   //CARDS Read, Update, Delete
+  const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
 
   const getCards = async () => {
-    const q = query(collection(db, "card"), where("set", "==", currentSet.id));
-    const data = await getDocs(q);
-    await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    if (loading === true) {
+      const setdata = await getDoc(currentSetDoc);
+      const tempSet = setdata.data();
+      const currentDOMSet = await getDoc(doc(db, "sets", tempSet.author));
+      await setSet({ id: currentDOMSet.id, name: currentDOMSet.data().name });
+      const q = query(
+        collection(db, "card"),
+        where("set", "==", tempSet.author)
+      );
+      const data = await getDocs(q);
+      await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    } else {
+      return;
+    }
+    setLoading(false);
   };
 
   const navigateSet = () => {
@@ -112,17 +126,16 @@ export default function Sets() {
   };
 
   useEffect(() => {
-    setSet(currentSet);
-    console.log(currentSet);
     getCards();
-  }, []);
+  }, [loading]);
+
   return (
     <div>
       <NavBar />
       <Container fluid>
         <Row>
           <Col className="setContainer">
-            <h1 className="setName">{currentSet.name}</h1>
+            <h1 className="setName">{set ? set.name : <Spinner />}</h1>
           </Col>
           <Col>
             <div className="setEdit">
@@ -185,6 +198,7 @@ export default function Sets() {
                           <BsTrash
                             onClick={() => {
                               deleteCard(card.id);
+                              setLoading(true);
                               getCards();
                             }}
                           />
@@ -247,6 +261,7 @@ export default function Sets() {
                 onClick={() => {
                   updateCard(updateID);
                   handleClose();
+                  setLoading(true);
                   getCards();
                 }}
               >
@@ -263,7 +278,7 @@ export default function Sets() {
         <Form>
           <Modal.Body>
             <Form.Group className="editSet">
-              <Form.Control defaultValue={currentSet.name}></Form.Control>
+              <Form.Control defaultValue={set.name}></Form.Control>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer className="mb-0">

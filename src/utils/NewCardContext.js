@@ -26,25 +26,31 @@ export function NewCardProvider({ children }) {
     setBack(input);
   };
 
-  const estNewSet = async (inputid, inputname) => {
+  const getCurrentSet = async () => {
+    const data = await getDoc(currentSetDoc);
+    const tempSet = data.data();
+    const currentDOMSet = await getDoc(doc(db, "sets", tempSet.author));
+    await setCurrentSet({
+      id: currentDOMSet.id,
+      name: currentDOMSet.data().name,
+    });
+  };
+
+  const estNewSet = async (inputid) => {
     await updateDoc(currentSetDoc, { author: inputid });
   };
-  useEffect(() => {
-    const getCurrentSet = async () => {
-      const data = await getDoc(currentSetDoc);
-      const tempSet = data.data();
-      const currentDOMSet = await getDoc(doc(db, "sets", tempSet.author));
-      await setCurrentSet({
-        id: currentDOMSet.id,
-        name: currentDOMSet.data().name,
-      });
-    };
-    getCurrentSet();
-  }, []);
 
   return (
     <NewCardContext.Provider
-      value={{ front, back, addNewCard, createNewBack, estNewSet, currentSet }}
+      value={{
+        front,
+        back,
+        addNewCard,
+        createNewBack,
+        estNewSet,
+        currentSet,
+        getCurrentSet,
+      }}
     >
       {children}
     </NewCardContext.Provider>
