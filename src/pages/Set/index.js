@@ -36,7 +36,7 @@ export default function Set() {
     await addDoc(cardCollectionRef, {
       name: newSet,
       author: currentUser.uid,
-    }).then((set) => estNewSet(set.id, newSet));
+    }).then((set) => estNewSet(set.id));
   };
 
   const renderTooltip = (props) => (
@@ -46,10 +46,12 @@ export default function Set() {
   );
 
   const navigate = useNavigate();
-  const navigateNewSet = () => {
+  const navigateNewSet = async () => {
+    await createNewSet();
     navigate("/newset");
   };
   const navigateSet = () => {
+    createNewSet();
     navigate("/sets");
   };
 
@@ -140,7 +142,6 @@ export default function Set() {
             <Modal.Footer>
               <Button
                 onClick={() => {
-                  createNewSet();
                   handleClose();
                   navigateNewSet();
                 }}

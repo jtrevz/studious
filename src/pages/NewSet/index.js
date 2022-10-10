@@ -10,28 +10,28 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import NavBar from "../../components/NavBar";
 import { useNewCardContext } from "./../../utils/NewCardContext";
 import { db } from "../../firebase";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDoc, doc } from "firebase/firestore";
 import "./styles.css";
 
 export default function NewSet() {
-  const { currentSet } = useNewCardContext();
-  const [input, setInput] = useState([
-    { front: "", back: "", set: currentSet.id },
-  ]);
+  const [set, setSet] = useState([]);
+  const [input, setInput] = useState([{ front: "", back: "", set: set.id }]);
+
+  const [loading, setLoading] = useState(true);
 
   const cardCollectionRef = collection(db, "card");
 
   const handleFormChange = (i, e) => {
     let data = [...input];
     data[i][e.target.name] = e.target.value;
-    data[i].set = currentSet.id;
+    data[i].set = set.id;
     setInput(data);
   };
 
   const { estNewSet } = useNewCardContext();
 
   const addCardInput = () => {
-    let newInput = { front: "", back: "", set: currentSet.id };
+    let newInput = { front: "", back: "", set: set.id };
     setInput([...input, newInput]);
   };
 
@@ -46,16 +46,35 @@ export default function NewSet() {
     navigate("/sets");
   };
 
+  const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
+
+  const getSet = async () => {
+    if (loading === true) {
+      const setdata = await getDoc(currentSetDoc);
+      const tempSet = setdata.data();
+      const currentDOMSet = await getDoc(doc(db, "sets", tempSet.author));
+      console.log(currentDOMSet.id);
+      await setSet({ id: currentDOMSet.id, name: currentDOMSet.data().name });
+    } else {
+      return;
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getSet();
+  }, [loading]);
+
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <Container fluid>
-        {currentSet.name ? (
+        {set.name ? (
           <>
             <Row className="mb-2 mt-1">
               <Col className="setNameContainer">
-                <h1 className="setName" key={currentSet.id}>
-                  {currentSet.name}
+                <h1 className="setName" key={set.id}>
+                  {set.name}
                 </h1>
               </Col>
             </Row>
@@ -115,7 +134,7 @@ export default function NewSet() {
                   onClick={() => {
                     inputAll();
                     navigateNewSet();
-                    estNewSet(currentSet.id, currentSet.name)
+                    estNewSet(set.id);
                   }}
                 >
                   Create Set
