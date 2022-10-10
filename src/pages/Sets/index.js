@@ -30,6 +30,7 @@ export default function Sets() {
   const [updateFront, setUpdateFront] = useState("");
   const [updateBack, setUpdateBack] = useState("");
   const [updateID, setUpdateID] = useState();
+  const [updatedSetName, setUpdatedSetName] = useState("");
 
   // Modals
 
@@ -89,6 +90,12 @@ export default function Sets() {
   };
 
   //set tooltips
+
+  const updateSetName = async () => {
+    const setDoc = doc(db, "sets", set.id);
+    await updateDoc(setDoc, { name: updatedSetName });
+    setLoading(true);
+  };
 
   const renderStudyTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
@@ -278,12 +285,19 @@ export default function Sets() {
         <Form>
           <Modal.Body>
             <Form.Group className="editSet">
-              <Form.Control defaultValue={set.name}></Form.Control>
+              <Form.Control
+                defaultValue={set.name}
+                onChange={(e) => setUpdatedSetName(e.target.value)}
+              ></Form.Control>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer className="mb-0">
             <Button
               style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
+              onClick={() => {
+                updateSetName();
+                handleClose();
+              }}
             >
               Save Changes
             </Button>
