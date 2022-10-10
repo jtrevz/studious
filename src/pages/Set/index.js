@@ -51,7 +51,6 @@ export default function Set() {
     navigate("/newset");
   };
   const navigateSet = () => {
-    createNewSet();
     navigate("/sets");
   };
 
