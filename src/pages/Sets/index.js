@@ -97,6 +97,12 @@ export default function Sets() {
     setLoading(true);
   };
 
+  const deleteSet = async () => {
+    const setDoc = doc(db, "sets", set.id);
+    await deleteDoc(setDoc);
+    navigate("/");
+  };
+
   const renderStudyTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       Study Set
@@ -325,6 +331,7 @@ export default function Sets() {
           </Button>
           <Button
             style={{ backgroundColor: "#e85a4f", borderColor: "#e85a4f" }}
+            onClick={deleteSet}
           >
             Confirm
           </Button>
