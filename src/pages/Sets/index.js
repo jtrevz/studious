@@ -69,6 +69,8 @@ export default function Sets() {
       );
       const data = await getDocs(q);
       await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      if (cards.length === 0) {
+      }
     } else {
       return;
     }
@@ -190,7 +192,7 @@ export default function Sets() {
         </Row>
         <Row>
           <Col>
-            {cards.length > 0 ? (
+            {!loading ? (
               cards.map((card) => (
                 <Stack
                   direction="horizontal"
@@ -241,6 +243,11 @@ export default function Sets() {
               ))
             ) : (
               <Spinner animation="border" />
+            )}
+            {cards.length == 0 && !loading ? (
+              <div className="noCardMsg">No cards to diplay yet!</div>
+            ) : (
+              <></>
             )}
           </Col>
         </Row>
