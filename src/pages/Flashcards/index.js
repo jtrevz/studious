@@ -13,15 +13,22 @@ import {
 } from "react-icons/bs";
 import "./styles.css";
 import { db } from "../../firebase";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  getDoc,
+  doc,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 import { useNewCardContext } from "./../../utils/NewCardContext";
 
 export default function Flashcards() {
   const [cards, setCards] = useState([]);
+  const [set, setSet] = useState();
   const [currentCard, setCurrentCard] = useState(0);
-
-  const { currentSet } = useNewCardContext();
-  const q = query(collection(db, "card"), where("set", "==", currentSet.id));
+  const [currentSet, setCurrentSet] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -43,14 +50,30 @@ export default function Flashcards() {
     return setCurrentCard(currentCard - 1);
   };
 
+  const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
+
+
   const getCards = async () => {
-    const data = await getDocs(q);
-    await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    if (loading === true) {
+      const setdata = await getDoc(currentSetDoc);
+      const temp = setdata.data();
+      const currentDOMSet = await getDoc(doc(db, "sets", temp.author));
+      await setSet({ id: currentDOMSet.id, name: currentDOMSet.data().name });
+      const q = query(collection(db, "card"), where("set", "==", temp.author));
+      const data = await getDocs(q);
+      await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    } else {
+      return;
+    }
+    setLoading(false);
+
+    // const data = await getDocs(q);
+    // await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
   useEffect(() => {
     getCards();
-  }, []);
+  }, [loading]);
 
   return (
     <div>

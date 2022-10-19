@@ -69,8 +69,7 @@ export default function Sets() {
       );
       const data = await getDocs(q);
       await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      if (cards.length === 0) {
-      }
+      
     } else {
       return;
     }
