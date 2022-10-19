@@ -8,7 +8,7 @@ import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import "./styles.css";
 
-export default function NewCard({ handleClose, getCards }) {
+export default function NewCard({ handleClose, getCards, set, loading }) {
   const { currentSet } = useNewCardContext();
   const [newFront, setNewFront] = useState("");
   const [newBack, setNewBack] = useState("");
@@ -19,7 +19,7 @@ export default function NewCard({ handleClose, getCards }) {
     await addDoc(cardCollectionRef, {
       front: newFront,
       back: newBack,
-      set: currentSet.id,
+      set: set.id,
     });
   };
 
@@ -55,6 +55,7 @@ export default function NewCard({ handleClose, getCards }) {
             createNewCard();
             handleClose();
             getCards();
+            loading();
           }}
         >
           Save Card

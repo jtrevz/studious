@@ -52,7 +52,6 @@ export default function Flashcards() {
 
   const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
 
-
   const getCards = async () => {
     if (loading === true) {
       const setdata = await getDoc(currentSetDoc);
@@ -69,6 +68,10 @@ export default function Flashcards() {
 
     // const data = await getDocs(q);
     // await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+
+  const lilLoading = () => {
+    setLoading(true);
   };
 
   useEffect(() => {
@@ -100,7 +103,12 @@ export default function Flashcards() {
         <Modal.Header closeButton>
           <Modal.Title>New Card</Modal.Title>
         </Modal.Header>
-        <NewCard handleClose={handleClose} getCards={getCards} />
+        <NewCard
+          handleClose={handleClose}
+          getCards={getCards}
+          set={set}
+          loading={lilLoading}
+        />
       </Modal>
     </div>
   );
