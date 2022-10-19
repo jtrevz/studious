@@ -1,15 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { useNewCardContext } from "./../../utils/NewCardContext";
-// import NewCardContext from "../../contexts/NewCardContext";
 import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import "./styles.css";
 
 export default function NewCard({ handleClose, getCards, set, loading }) {
-  const { currentSet } = useNewCardContext();
   const [newFront, setNewFront] = useState("");
   const [newBack, setNewBack] = useState("");
 

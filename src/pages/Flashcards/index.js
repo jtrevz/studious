@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 // import Set from "../../components/Set";
 import Flashcard from "../../components/Flashcard";
 import NewCard from "../../components/NewCard";
@@ -21,13 +21,12 @@ import {
   where,
   getDocs,
 } from "firebase/firestore";
-import { useNewCardContext } from "./../../utils/NewCardContext";
 
 export default function Flashcards() {
   const [cards, setCards] = useState([]);
   const [set, setSet] = useState();
   const [currentCard, setCurrentCard] = useState(0);
-  const [currentSet, setCurrentSet] = useState({});
+  // const [currentSet, setCurrentSet] = useState({});
   const [loading, setLoading] = useState(true);
 
   const [show, setShow] = useState(false);

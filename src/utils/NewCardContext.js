@@ -1,13 +1,6 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, { createContext, useState, useContext } from "react";
 import { db } from "../firebase";
-import {
-  updateDoc,
-  doc,
-  where,
-  query,
-  getDoc,
-  collection,
-} from "firebase/firestore";
+import { updateDoc, doc, getDoc } from "firebase/firestore";
 
 const NewCardContext = createContext();
 
