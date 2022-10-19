@@ -3,7 +3,7 @@
 .accountCont {
   /* background-color: white;
   border-radius: 5px; */
-  padding: 2%;
+  padding: 2% 6% 2% 6%;
   margin-top: 0;
 }
 
@@ -23,7 +23,6 @@
   margin: 1%;
   border-radius: 0.25rem;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
-  padding: none !important;
 }
 
 .imageCont {
@@ -37,6 +36,7 @@
   margin-top: 5%;
   padding: 5%;
   color: var(--bs-gray-dark);
+  font-size: 0.8rem;
 }
 
 .accTool {
@@ -47,16 +47,16 @@
 #userPicture {
   display: block;
   border-radius: 50%;
-  height: 35vh;
+  height: 18vh;
   width: auto;
   border: 1px solid lightgrey;
-  padding: 5%;
+  padding: 2%;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
 }
 
 .inputCards {
   border: 1px solid lightgrey;
-  padding: 7%;
+  padding: 6%;
 }
 
 .inTop {
@@ -100,11 +100,38 @@
     flex-direction: column;
   }
 
+  .userND {
+    display: block;
+    text-align: center;
+    margin-top: 5%;
+    padding: 5%;
+    color: var(--bs-gray-dark);
+  }
+
   #userPicture {
-    height: 25vh;
+    height: 17vh;
+    width: auto;
   }
 
   .userND {
     padding: 10%;
+  }
+  .inputCards {
+    border: 1px solid lightgrey;
+    padding: 7%;
+  }
+  .userCard {
+    background-color: white;
+    margin: 1%;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+    padding: none !important;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  #userPicture {
+    height: 17vh;
+    width: auto;
   }
 }
