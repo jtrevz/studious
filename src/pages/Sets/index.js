@@ -13,7 +13,6 @@ import Modal from "react-bootstrap/Modal";
 import Stack from "react-bootstrap/Stack";
 import NavBar from "../../components/NavBar";
 import { useNavigate } from "react-router-dom";
-import { useNewCardContext } from "./../../utils/NewCardContext";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import { updateDoc, doc, deleteDoc, where, query } from "firebase/firestore";
@@ -69,7 +68,6 @@ export default function Sets() {
       );
       const data = await getDocs(q);
       await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      
     } else {
       return;
     }
@@ -243,7 +241,7 @@ export default function Sets() {
             ) : (
               <Spinner animation="border" />
             )}
-            {cards.length == 0 && !loading ? (
+            {cards.length === 0 && !loading ? (
               <div className="noCardMsg">No cards to diplay yet!</div>
             ) : (
               <></>
