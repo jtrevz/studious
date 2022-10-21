@@ -45,7 +45,6 @@
 
 .card .back {
   transform: rotateY(180deg);
-  transform: translateZ(1px);
 }
 .modal-header {
   font-family: "Nunito";
