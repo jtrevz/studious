@@ -39,6 +39,7 @@
   font-family: "Nunito", sans-serif;
   font-size: 2rem;
   color: #555;
+  transform: translateY(1px);
 }
 
 .card .back {
