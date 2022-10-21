@@ -204,7 +204,7 @@ export default function Sets() {
                       <OverlayTrigger
                         delay={{ hide: 450, show: 300 }}
                         overlay={renderDeleteCardTooltip}
-                        placement="right"
+                        placement="left"
                       >
                         <button className="btnStyling">
                           <BsTrash
@@ -221,7 +221,7 @@ export default function Sets() {
                       <OverlayTrigger
                         delay={{ hide: 450, show: 300 }}
                         overlay={renderEditCardTooltip}
-                        placement="right"
+                        placement="left"
                       >
                         <button className="btnStyling">
                           <BsPencil
