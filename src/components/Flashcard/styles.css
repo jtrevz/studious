@@ -29,6 +29,7 @@
   position: absolute;
   padding: 1rem;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .front {
@@ -40,7 +41,7 @@
   font-family: "Nunito", sans-serif;
   font-size: 2rem;
   color: #555;
-  transform: translateZ(1px)
+  transform: translateZ(1px);
 }
 
 .card .back {
