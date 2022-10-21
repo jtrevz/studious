@@ -58,6 +58,7 @@ export default function Login() {
               placeholder="pass123"
               ref={passwordRef}
               required
+              autoComplete="on"
             />
           </FloatingLabel>
           <h5 className="smallBanner">
