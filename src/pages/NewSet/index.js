@@ -11,6 +11,7 @@ import NavBar from "../../components/NavBar";
 import { useNewCardContext } from "./../../utils/NewCardContext";
 import { db } from "../../firebase";
 import { collection, addDoc, getDoc, doc } from "firebase/firestore";
+import { useAuthContext } from "../../utils/AuthContext";
 import "./styles.css";
 
 export default function NewSet() {
@@ -20,6 +21,7 @@ export default function NewSet() {
   const [loading, setLoading] = useState(true);
 
   const cardCollectionRef = collection(db, "card");
+  const { currentUser } = useAuthContext();
 
   const handleFormChange = (i, e) => {
     let data = [...input];
@@ -46,14 +48,13 @@ export default function NewSet() {
     navigate("/sets");
   };
 
-  const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
+  const currentSetDoc = doc(db, "current", currentUser.uid);
 
   const getSet = async () => {
     if (loading === true) {
       const setdata = await getDoc(currentSetDoc);
       const tempSet = setdata.data();
-      const currentDOMSet = await getDoc(doc(db, "sets", tempSet.author));
-      console.log(currentDOMSet.id);
+      const currentDOMSet = await getDoc(doc(db, "sets", tempSet.set));
       await setSet({ id: currentDOMSet.id, name: currentDOMSet.data().name });
     } else {
       return;

@@ -36,7 +36,7 @@ export default function Set() {
     await addDoc(cardCollectionRef, {
       name: newSet,
       author: currentUser.uid,
-    }).then((set) => estNewSet(set.id));
+    }).then((set) => estNewSet(set.id, currentUser.uid));
   };
 
   const renderTooltip = (props) => (
