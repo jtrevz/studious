@@ -102,7 +102,7 @@ export default function Set() {
                 <Card
                   className="setCard"
                   onClick={() => {
-                    estNewSet(set.key, set.name);
+                    estNewSet(set.key, currentUser.uid);
                     navigateSet();
                   }}
                 >

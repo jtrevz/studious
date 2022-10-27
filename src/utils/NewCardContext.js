@@ -12,6 +12,7 @@ export function NewCardProvider({ children }) {
   const [currentSet, setCurrentSet] = useState({ id: "", name: "" });
 
   const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
+  const currentSetRef = collection(db, "current");
 
   const addNewCard = (card) => {};
 
@@ -29,8 +30,11 @@ export function NewCardProvider({ children }) {
     });
   };
 
-  const estNewSet = async (inputid) => {
-    await updateDoc(currentSetDoc, { author: inputid });
+  const estNewSet = async (inputid, authorid) => {
+    await setDoc(doc(currentSetRef, authorid), {
+      author: authorid,
+      set: inputid,
+    });
   };
 
   return (
