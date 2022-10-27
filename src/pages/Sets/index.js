@@ -55,8 +55,7 @@ export default function Sets() {
   };
 
   //CARDS Read, Update, Delete
-  const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
-
+  // const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
   const { currentUser } = useAuthContext();
 
   const getCards = async () => {
@@ -65,10 +64,7 @@ export default function Sets() {
       const tempSet = setdata.data();
       const currentDOMSet = await getDoc(doc(db, "sets", tempSet.set));
       await setSet({ id: currentDOMSet.id, name: currentDOMSet.data().name });
-      const q = query(
-        collection(db, "card"),
-        where("set", "==", tempSet.author)
-      );
+      const q = query(collection(db, "card"), where("set", "==", tempSet.set));
       const data = await getDocs(q);
       await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     } else {
