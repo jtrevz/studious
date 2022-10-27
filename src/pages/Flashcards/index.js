@@ -13,6 +13,7 @@ import {
 } from "react-icons/bs";
 import "./styles.css";
 import { db } from "../../firebase";
+import { useAuthContext } from "../../utils/AuthContext";
 import {
   collection,
   getDoc,
@@ -48,15 +49,15 @@ export default function Flashcards() {
     return setCurrentCard(currentCard - 1);
   };
 
-  const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
+  const { currentUser } = useAuthContext();
 
   const getCards = async () => {
     if (loading === true) {
-      const setdata = await getDoc(currentSetDoc);
+      const setdata = await getDoc(doc(db, "current", currentUser.uid));
       const temp = setdata.data();
-      const currentDOMSet = await getDoc(doc(db, "sets", temp.author));
+      const currentDOMSet = await getDoc(doc(db, "sets", temp.set));
       await setSet({ id: currentDOMSet.id, name: currentDOMSet.data().name });
-      const q = query(collection(db, "card"), where("set", "==", temp.author));
+      const q = query(collection(db, "card"), where("set", "==", temp.set));
       const data = await getDocs(q);
       await setCards(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     } else {
