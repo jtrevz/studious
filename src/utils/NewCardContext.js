@@ -14,6 +14,8 @@ export function NewCardProvider({ children }) {
   const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
   const currentSetRef = collection(db, "current");
 
+  const addNewCard = (card) => {};
+
   const createNewBack = (input) => {
     setBack(input);
   };
