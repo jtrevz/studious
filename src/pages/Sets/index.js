@@ -15,14 +15,7 @@ import NavBar from "../../components/NavBar";
 import { useNavigate } from "react-router-dom";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import {
-  updateDoc,
-  doc,
-  deleteDoc,
-  where,
-  query,
-  collection,
-} from "firebase/firestore";
+import { updateDoc, doc, deleteDoc, where, query } from "firebase/firestore";
 import { useAuthContext } from "./../../utils/AuthContext";
 import "./styles.css";
 
