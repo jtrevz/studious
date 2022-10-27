@@ -15,7 +15,15 @@ import NavBar from "../../components/NavBar";
 import { useNavigate } from "react-router-dom";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import { updateDoc, doc, deleteDoc, where, query } from "firebase/firestore";
+import {
+  updateDoc,
+  doc,
+  deleteDoc,
+  where,
+  query,
+  collection,
+} from "firebase/firestore";
+import { useAuthContext } from "./../../utils/AuthContext";
 import "./styles.css";
 
 export default function Sets() {
@@ -55,12 +63,14 @@ export default function Sets() {
 
   //CARDS Read, Update, Delete
   const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
+  const { currentUser } = useAuthContext();
+  // const currentSetRef = collection(db, "current");
 
   const getCards = async () => {
     if (loading === true) {
-      const setdata = await getDoc(currentSetDoc);
+      const setdata = await getDoc(db, "current", currentUser.uid);
       const tempSet = setdata.data();
-      const currentDOMSet = await getDoc(doc(db, "sets", tempSet.author));
+      const currentDOMSet = await getDoc(doc(db, "sets", tempSet.set));
       await setSet({ id: currentDOMSet.id, name: currentDOMSet.data().name });
       const q = query(
         collection(db, "card"),

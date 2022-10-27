@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
 import { db } from "../firebase";
-import { updateDoc, doc, getDoc, collection, setDoc } from "firebase/firestore";
+import { doc, getDoc, collection, setDoc } from "firebase/firestore";
 
 const NewCardContext = createContext();
 
@@ -13,8 +13,6 @@ export function NewCardProvider({ children }) {
 
   const currentSetDoc = doc(db, "current", "ryO2O3JTb9yVDvOwL2bN");
   const currentSetRef = collection(db, "current");
-
-  const addNewCard = (card) => {};
 
   const createNewBack = (input) => {
     setBack(input);
