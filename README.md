@@ -2,7 +2,8 @@
 
 Studious is a studying tool that allows users to conveniently make and review flashcards within the application. Users have the ability to make, delete, and edit flashcard sets.
 
-Add Pic
+[Study Mode](https://user-images.githubusercontent.com/78758382/201801141-51968fe5-0a2e-4c2d-b600-8193a9c289fd.png)
+
 
 ---
 
