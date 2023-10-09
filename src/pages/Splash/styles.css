@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Joan&family=Nunito:wght@400&display=swap");
+#splash {
+  width: 100%;
+}
+.g-background {
+  background-color: #376e6f;
+  border-radius: 0% 0% 0% 80px;
+  height: 80vh;
+}
+
+.card-layer {
+  margin-top: -75vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 3;
+}
+
+.design-ft {
+  position: absolute;
+  margin-top: -75vh;
+  z-index: 2;
+  background-color: #e85a4f;
+  height: 200px;
+  border-radius: 0% 90px 90px 0%;
+  /* transform: translateY(-230%); */
+}
+
+.splash-card {
+  background-color: white;
+  aspect-ratio: 16/9;
+}
+
+.splash-lettering {
+  font-family: "Joan", serif;
+  font-size: 70px;
+}
+
+.act-stmt {
+  /* font-family: "Nunito", serif; */
+  font-weight: 500;
+  color: white;
+}
+
+#splash-logo {
+  color: white;
+  font-family: "Nunito", serif;
+  font-size: 28px;
+}
+
+#splash-logo svg {
+  margin: auto;
+}

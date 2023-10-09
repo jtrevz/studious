@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import Account from "./pages/Account";
 import PrivateRoute from "./components/PrivateRoute";
 import Flashcard from "./pages/Flashcards";
+import Splash from "./pages/Splash";
 import ResetPassword from "./pages/ResetPassword";
 import { NewCardProvider } from "./utils/NewCardContext";
 import { AuthContextProvider } from "./utils/AuthContext";
@@ -23,6 +24,7 @@ function App() {
           <Router>
             <NewCardProvider>
               <Routes>
+                <Route exact path="/" element={<Splash />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
                 <Route
