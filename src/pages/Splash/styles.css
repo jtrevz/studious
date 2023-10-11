@@ -20,9 +20,8 @@
   margin-top: -75vh;
   z-index: 2;
   background-color: #e85a4f;
-  height: 200px;
+  height: 90px;
   border-radius: 0% 90px 90px 0%;
-  /* transform: translateY(-230%); */
 }
 
 .splash-card {
@@ -32,11 +31,12 @@
 
 .splash-lettering {
   font-family: "Joan", serif;
-  font-size: 70px;
+  font-size: 30px;
 }
 
 .act-stmt {
-  /* font-family: "Nunito", serif; */
+  font-family: "Nunito", serif;
+  font-size: 20px;
   font-weight: 500;
   color: white;
 }
@@ -49,4 +49,54 @@
 
 #splash-logo svg {
   margin: auto;
+}
+
+@media screen and (min-width: 450px) {
+  .splash-lettering {
+    font-size: 40px;
+  }
+  .nu-card {
+    padding-right: 6%;
+    padding-left: 6%;
+  }
+  .stmt-d {
+    padding-right: 6%;
+    padding-left: 6%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .act-stmt-box {
+    margin-top: 12vh;
+  }
+  .design-ft {
+    margin-top: -68vh;
+  }
+  .card-layer {
+    margin-top: -68vh;
+  }
+}
+@media screen and (max-width: 767px) {
+  .act-stmt-box {
+    margin-top: 10vh;
+  }
+}
+
+@media screen and (min-width: 575px) {
+  .design-ft {
+    height: 200px;
+    border-radius: 0% 90px 90px 0%;
+  }
+  .splash-lettering {
+    font-size: 60px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .act-stmt {
+    font-size: 26px;
+  }
+  .splash-lettering {
+    font-size: 65px;
+  }
 }
