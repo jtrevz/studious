@@ -88,7 +88,7 @@ export default function Set() {
           </Col>
         </Row>
         <Row>
-          {sets.length > 0 ? (
+          {sets && sets.length > 0 ? (
             sets.map((set) => (
               <Col
                 s={12}
@@ -113,8 +113,10 @@ export default function Set() {
                 </Card>
               </Col>
             ))
+          ) : sets && sets.length === 0 ? (
+            <div className="noCardMsg">No sets to display yet!</div>
           ) : (
-            <Spinner animation="border" />
+            <></>
           )}
         </Row>
       </Container>
