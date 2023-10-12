@@ -24,7 +24,7 @@ function App() {
           <Router>
             <NewCardProvider>
               <Routes>
-                <Route exact path="/" element={<Splash />} />
+                <Route exact path="/splash" element={<Splash />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
                 <Route
