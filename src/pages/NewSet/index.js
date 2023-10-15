@@ -138,7 +138,7 @@ export default function NewSet() {
                     estNewSet(set.id);
                   }}
                 >
-                  Create Set
+                  Save Changes
                 </Button>
               </Col>
             </Row>

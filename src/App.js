@@ -45,8 +45,8 @@ function App() {
                 <Route exact path="/collection" element={<PrivateRoute />}>
                   <Route exact path="/collection" element={<Set />} />
                 </Route>
-                <Route exact path="/newset" element={<PrivateRoute />}>
-                  <Route path="/newset" element={<NewSet />} />
+                <Route exact path="/editset" element={<PrivateRoute />}>
+                  <Route path="/editset" element={<NewSet />} />
                 </Route>
                 <Route exact path="/account" element={<PrivateRoute />}>
                   <Route exact path="/account" element={<Account />} />

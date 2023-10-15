@@ -2,11 +2,9 @@ import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { BsHourglassSplit } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 export default function Splash() {
-  const navigate = useNavigate();
   return (
     <Container id="splash" fluid className="p-0">
       <Row className="d-flex justify-content-end m-0">

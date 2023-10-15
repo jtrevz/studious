@@ -9,6 +9,7 @@ import Spinner from "react-bootstrap/Spinner";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Alert from "react-bootstrap/Alert";
 import NavBar from "../../components/NavBar";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { Row, Col } from "react-bootstrap";
@@ -21,6 +22,8 @@ import { useNewCardContext } from "./../../utils/NewCardContext";
 export default function Set() {
   const [sets, setSets] = useState([]);
   const [newSet, setNewSet] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const { currentUser } = useAuthContext();
 
   const { estNewSet } = useNewCardContext();
@@ -47,8 +50,14 @@ export default function Set() {
 
   const navigate = useNavigate();
   const navigateNewSet = async () => {
-    await createNewSet();
-    navigate("/newset");
+    if (newSet.length > 0) {
+      setError("");
+      await createNewSet();
+      navigate("/editset");
+      handleClose();
+    } else {
+      setError("Empty set name");
+    }
   };
   const navigateSet = () => {
     navigate("/sets");
@@ -65,6 +74,7 @@ export default function Set() {
 
   useEffect(() => {
     getSets();
+    setLoading(false);
   }, []);
 
   return (
@@ -113,10 +123,10 @@ export default function Set() {
                 </Card>
               </Col>
             ))
-          ) : sets && sets.length === 0 ? (
+          ) : !loading && sets.length === 0 ? (
             <div className="noCardMsg">No sets to display yet!</div>
           ) : (
-            <></>
+            <Spinner />
           )}
         </Row>
       </Container>
@@ -125,6 +135,7 @@ export default function Set() {
           <Modal.Title className="">Create New Set</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {error && <Alert variant="danger">{error}</Alert>}
           <Form>
             <Form.Group className="mb-3">
               <FloatingLabel
@@ -143,7 +154,6 @@ export default function Set() {
             <Modal.Footer>
               <Button
                 onClick={() => {
-                  handleClose();
                   navigateNewSet();
                 }}
               >

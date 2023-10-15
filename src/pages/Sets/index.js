@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
-import { BsFillLightningFill, BsPencil, BsTrash } from "react-icons/bs";
+import {
+  BsFillLightningFill,
+  BsPencil,
+  BsTrash,
+  BsPlusCircleFill,
+} from "react-icons/bs";
 import { TiWarningOutline } from "react-icons/ti";
 import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
@@ -77,6 +82,10 @@ export default function Sets() {
     navigate("/flashcards");
   };
 
+  const navigateEdit = () => {
+    navigate("/editset");
+  };
+
   const updateCard = async (id) => {
     const cardDoc = doc(db, "card", id);
     const updates = {
@@ -119,6 +128,11 @@ export default function Sets() {
     </Tooltip>
   );
 
+  const renderAddTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Add Cards
+    </Tooltip>
+  );
   //card tooltips
   const renderEditCardTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
@@ -187,7 +201,7 @@ export default function Sets() {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="col-12">
             {!loading ? (
               cards.map((card) => (
                 <Stack
@@ -241,10 +255,21 @@ export default function Sets() {
               <Spinner animation="border" />
             )}
             {cards.length === 0 && !loading ? (
-              <div className="noCardMsg">No cards to diplay yet!</div>
+              <div className="noCardMsg py-5">No cards to diplay yet!</div>
             ) : (
               <></>
             )}
+          </Col>
+          <Col className="d-flex justify-content-end pe-4">
+            <OverlayTrigger
+              delay={{ hide: 450, show: 300 }}
+              overlay={renderAddTooltip}
+              placement="left"
+            >
+              <button className="btnStyling">
+                <BsPlusCircleFill className="editBtn" onClick={navigateEdit} />
+              </button>
+            </OverlayTrigger>
           </Col>
         </Row>
       </Container>
